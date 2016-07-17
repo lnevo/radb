@@ -1,0 +1,24 @@
+web:
+  image: lnevo/nginx
+  ports:
+    - "80:80"
+  volumes:
+    - ./src/public:/www
+    - ./src/config.php:/www/radb/config.php
+    - ./src/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+  links:
+    - php
+php:
+  image: nmcteam/php56
+  volumes:
+    - ./src/public:/www
+    - ./src/php-fpm.conf:/etc/php5/fpm/php-fpm.conf
+    - ./src/config.php:/www/radb/config.php
+mrtg:
+  image: lnevo/mrtg
+  volumes:
+    - ./src/public:/www
+    - ./src/bin:/root/bin
+    - ./src/crontab:/cron/crontab
+    - ./src/mrtg.cfg:/www/mrtg/mrtg.cfg
+    - ./src/config.php:/www/radb/config.php

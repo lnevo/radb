@@ -1,0 +1,48 @@
+CACHE MANIFEST
+
+# Version 0.0.133
+
+CACHE:
+
+#images
+/radb/images/green-led-on.png
+/radb/images/red-led-off.png
+/radb/images/webcam.jpg
+/radb/images/webcam2.jpg
+
+#internal HTML documents
+/mrtg/dosing.html
+/mrtg/ph.html
+/mrtg/pwm.html
+/mrtg/radb_index.html
+/mrtg/rf.html
+/mrtg/sal.html
+/mrtg/temp.html
+/mrtg/wl.html
+
+#style sheets
+/radb/css/add2home.css
+/radb/css/bootstrap-responsive.css
+/radb/css/bootstrap.css
+
+#javascript files
+/radb/css/add2home.js
+/radb/css/jquery.min.js
+/radb/RGraph/libraries/RGraph.common.core.js
+/radb/RGraph/libraries/RGraph.gauge.js
+/radb/css/jquery.js
+/radb/css/bootstrap-transition.js
+/radb/css/bootstrap-alert.js
+/radb/css/bootstrap-modal.js
+/radb/css/bootstrap-dropdown.js
+/radb/css/bootstrap-scrollspy.js
+/radb/css/bootstrap-tab.js
+/radb/css/bootstrap-tooltip.js
+/radb/css/bootstrap-popover.js
+/radb/css/bootstrap-button.js
+/radb/css/bootstrap-collapse.js
+/radb/css/bootstrap-carousel.js
+/radb/css/bootstrap-typeahead.js
+
+NETWORK:
+*

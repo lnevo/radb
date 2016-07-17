@@ -1,0 +1,7 @@
+gauge.value=[data.r99.RFS, data.mem.Mem_B_RFSpeed, data.r99.C4 ];
+mode_gauge.value=[data.r99.RFM, data.mem.Mem_B_RFMode, data.mem.Mem_B_TideMode];
+dur_gauge.value=[data.r99.RFD, data.mem.Mem_B_RFDuration];
+wl_gauge.value=data.r99.WL;
+moon_gauge.value=data.r99.PWMA;
+dt_temp.value=[data.r99.T1/10,data.r99.T2/10,data.r99.T3/10];
+ph_gauge.value=data.r99.PH/100;
