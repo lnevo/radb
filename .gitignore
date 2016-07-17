@@ -1,3 +1,8 @@
-src/public/mrtg/
-src/public/ra/
 src/config.php
+src/public/ra/
+src/public/mrtg/*log
+src/public/mrtg/*html
+src/public/mrtg/*png
+src/public/mrtg/*old
+src/public/mrtg/*bak
+src/public/mrtg/*ok
