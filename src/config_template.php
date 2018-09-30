@@ -8,6 +8,7 @@
   $GLOBALS['RACAM']="http://YOUR.WEBCAM.IP:8080/image.jpg?cidx=584511813&timestamp=";
   $GLOBALS['RACAM2']="http://YOUR.WEBCAM.IP:8090/image/jpeg.cgi";
   $GLOBALS['LabelURL']="http://forum.reefangel.com/status/labels.aspx?id=RAFORUM_USERNAME";
+  $GLOBALS['LabelURLjson']="http://forum.reefangel.com/status/labels_json.aspx?id=RAFORUM_USERNAME";
   $GLOBALS['RTRoot']="http://www.reeftronics.net/PREFIX/USERNAME";
 
   # Data Files

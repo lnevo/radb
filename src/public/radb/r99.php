@@ -24,8 +24,9 @@
     $answer="";
 
     // Read first byte
-	$answer=substr($string,$position+2,2);  // returns "abcde"
-	$answer=substr($string,$position,2);  // returns "abcde"
+	$answer1=substr($string,$position+2,2);  // returns "abcde"
+	$answer2=substr($string,$position,2);  // returns "abcde"
+	$answer=$answer1 . $answer2;
     $answer=hexdec($answer);
 
     // handle negatives
@@ -133,6 +134,50 @@ foreach($xml as $key => $value)
   $relay37status=$RMASK3[1];
   $relay38status=$RMASK3[0];
 
+  $R4=$xml->{'R4'};
+  $R4BIN=getBin($R4);
+  $RON4=$xml->{'RON4'};
+  $ROFF4=$xml->{'ROFF4'};
+  $RMASK4=applyMasks($xml->{'R4'},$xml->{'RON4'},$xml->{'ROFF4'});
+  $relay41val=$R4BIN[7];
+  $relay42val=$R4BIN[6];
+  $relay43val=$R4BIN[5];
+  $relay44val=$R4BIN[4];
+  $relay45val=$R4BIN[3];
+  $relay46val=$R4BIN[2];
+  $relay47val=$R4BIN[1];
+  $relay48val=$R4BIN[0];
+  $relay41status=$RMASK4[7];
+  $relay42status=$RMASK4[6];
+  $relay43status=$RMASK4[5];
+  $relay44status=$RMASK4[4];
+  $relay45status=$RMASK4[3];
+  $relay46status=$RMASK4[2];
+  $relay47status=$RMASK4[1];
+  $relay48status=$RMASK4[0];
+
+  $R5=$xml->{'R5'};
+  $R5BIN=getBin($R5);
+  $RON5=$xml->{'RON5'};
+  $ROFF5=$xml->{'ROFF5'};
+  $RMASK5=applyMasks($xml->{'R5'},$xml->{'RON5'},$xml->{'ROFF5'});
+  $relay51val=$R5BIN[7];
+  $relay52val=$R5BIN[6];
+  $relay53val=$R5BIN[5];
+  $relay54val=$R5BIN[4];
+  $relay55val=$R5BIN[3];
+  $relay56val=$R5BIN[2];
+  $relay57val=$R5BIN[1];
+  $relay58val=$R5BIN[0];
+  $relay51status=$RMASK5[7];
+  $relay52status=$RMASK5[6];
+  $relay53status=$RMASK5[5];
+  $relay54status=$RMASK5[4];
+  $relay55status=$RMASK5[3];
+  $relay56status=$RMASK5[2];
+  $relay57status=$RMASK5[1];
+  $relay58status=$RMASK5[0];
+
   echo "R1=" . $relay1status . "\n";
   echo "R2=" . $relay2status . "\n";
   echo "R3=" . $relay3status . "\n";
@@ -168,6 +213,24 @@ foreach($xml as $key => $value)
   echo "R36=" . $relay36status . "\n";
   echo "R37=" . $relay37status . "\n";
   echo "R38=" . $relay38status . "\n";
+
+  echo "R41=" . $relay41status . "\n";
+  echo "R42=" . $relay42status . "\n";
+  echo "R43=" . $relay43status . "\n";
+  echo "R44=" . $relay44status . "\n";
+  echo "R45=" . $relay45status . "\n";
+  echo "R46=" . $relay46status . "\n";
+  echo "R47=" . $relay47status . "\n";
+  echo "R48=" . $relay48status . "\n";
+
+  echo "R51=" . $relay51status . "\n";
+  echo "R52=" . $relay52status . "\n";
+  echo "R53=" . $relay53status . "\n";
+  echo "R54=" . $relay54status . "\n";
+  echo "R55=" . $relay55status . "\n";
+  echo "R56=" . $relay56status . "\n";
+  echo "R57=" . $relay57status . "\n";
+  echo "R58=" . $relay58status . "\n";
 
   $ra_mem_full = $xml->{'MEM'};
 
@@ -238,6 +301,13 @@ echo "Mem_B_VinegarWeek=" . readByte(176-$FullVarsStart,$ra_mem_full) . "\n";
 echo "Mem_B_MaintVinegar=" . readByte(177-$FullVarsStart,$ra_mem_full) . "\n";
 echo "Mem_B_EnableStorm=" . readByte(178-$FullVarsStart,$ra_mem_full) . "\n";
 echo "Mem_B_ForceRandomTide=" . readByte(179-$FullVarsStart,$ra_mem_full) . "\n";
+echo "Mem_I_AWCTime=" . readInt(180-$FullVarsStart,$ra_mem_full) . "\n";
+echo "Mem_I_AWCFrequency=" . readInt(182-$FullVarsStart,$ra_mem_full) . "\n";
+echo "Mem_I_AWCOffset=" . readInt(184-$FullVarsStart,$ra_mem_full) . "\n";
+echo "Mem_I_MixTime=" . readInt(186-$FullVarsStart,$ra_mem_full) . "\n";
+echo "Mem_I_MixFrequency=" . readInt(188-$FullVarsStart,$ra_mem_full) . "\n";
+echo "Mem_B_FlushTime=" . readByte(190-$FullVarsStart,$ra_mem_full) . "\n";
+
 echo "Mem_B_ResetMemory=" . readByte(199-$FullVarsStart,$ra_mem_full) . "\n";
 $FullVarsEnd=200;
 
@@ -373,6 +443,16 @@ echo "Mem_B_PWMSlopeDurationA2=" . readByte($VarsStart+163,$ra_mem_full) . "\n";
 echo "Mem_B_DCPumpThreshold=" . readByte($VarsStart+164,$ra_mem_full) . "\n";
 echo "Mem_I_PHEControlOn=" . readInt($VarsStart+165,$ra_mem_full) . "\n";
 echo "Mem_I_PHEControlOff=" . readInt($VarsStart+167,$ra_mem_full) . "\n";
-$VarsEnd=$VarsStart+169;
+echo "Mem_B_TestMode=" . readInt($VarsStart+169,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion0Decimal=" . readInt($VarsStart+170,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion1Decimal=" . readInt($VarsStart+171,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion2Decimal=" . readInt($VarsStart+172,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion3Decimal=" . readInt($VarsStart+173,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion4Decimal=" . readInt($VarsStart+174,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion5Decimal=" . readInt($VarsStart+175,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion6Decimal=" . readInt($VarsStart+176,$ra_mem_full) . "\n";
+echo "Mem_B_CustomExpansion7Decimal=" . readInt($VarsStart+177,$ra_mem_full) . "\n";
+echo "Mem_B_Touch_Orientation=" . readInt($VarsStart+178,$ra_mem_full) . "\n";
+$VarsEnd=$VarsStart+179;
 ?>
 

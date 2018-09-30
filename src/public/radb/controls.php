@@ -74,8 +74,8 @@
           		  Last Filled: <b><?php echo $Mem_B_MaintATO; ?></b>
 			          <p>
               	<form class="form-inline">
-               	  <?= ajaxButton("RefillATOOn","Start ATO Refill","r211",""); ?>
-               	  <?= ajaxButton("RefillATOOff","Stop ATO Refill","r212",""); ?>
+               	  <?= ajaxButton("RefillATOOn","Start ATO Refill","r311",""); ?>
+               	  <?= ajaxButton("RefillATOOff","Stop ATO Refill","r312",""); ?>
   		          </form>
              	  <?= ajaxForm("ATO Rate Alarm","RateAlarmAjax","setRateAlarmAjax",$Mem_B_RateAlarm,"mb142"); ?>
               </div>
@@ -91,9 +91,9 @@
             <div id="collapse02a" class="accordion-body collapse">
               <div class="accordion-inner">
             	<form class="form-inline">
-            	  <?= ajaxButton("startWC","Enable ATO","r221",""); ?>
-            	  <?= ajaxButton("startFill","Start Filling","r231",""); ?>
-            	  <?= ajaxButton("stopWC","Disable ATO","r222",""); ?>
+            	  <?= ajaxButton("startWC","Enable ATO","r321",""); ?>
+            	  <?= ajaxButton("startFill","Start Filling","r331",""); ?>
+            	  <?= ajaxButton("stopWC","Disable ATO","r322",""); ?>
 		  
             	</form>
              	  <?= ajaxForm("Fill Time","WCFillTimeAjax","setWCFillTimeAjax",$Mem_I_WCFillTime,"mi106"); ?>
@@ -274,10 +274,10 @@
             		<?= ajaxForm("DP3 Time","DP3Time","setDP3Time",$Mem_B_DP3Timer,"mb333"); ?>
             		<h5>DP3 dosed today: <?php echo $CustomVar[3]; ?> units</h5>
                 <form>
-            		<?= ajaxButton("UnlockPorts","Unlock Ports","r280",""); ?>
-            		<?= ajaxButton("CalibrateDP","Begin Calibration","r271",""); ?>  
-            		<?= ajaxButton("LockPorts","Cancel Changes","r282",""); ?>  
-            		<?= ajaxButton("CalibrateDPEnd","Save Calibration","r272",""); ?>  
+            		<?= ajaxButton("UnlockPorts","Unlock Ports","r380",""); ?>
+            		<?= ajaxButton("CalibrateDP","Begin Calibration","r371",""); ?>  
+            		<?= ajaxButton("LockPorts","Cancel Changes","r382",""); ?>  
+            		<?= ajaxButton("CalibrateDPEnd","Save Calibration","r372",""); ?>  
 		  
             		</form>
             		<?= ajaxForm("DP1 Calibrate Volume","CalDP1Vol","setCalDP1Vol",$Mem_I_CalDP1Vol,"mi128"); ?>
@@ -303,8 +303,8 @@
               <div class="accordion-inner">
             		<form class="form-inline">
                 <div class="btn-group">
-              		<?= ajaxButton("LockPorts","Lock Ports","r282",""); ?>
-            	  	<?= ajaxButton("UnlockPorts","Unlock Ports","r280",""); ?>
+              		<?= ajaxButton("LockPorts","Lock Ports","r382",""); ?>
+            	  	<?= ajaxButton("UnlockPorts","Unlock Ports","r380",""); ?>
                 </div>
 		  
             		</form>  

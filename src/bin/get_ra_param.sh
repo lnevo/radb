@@ -50,7 +50,6 @@ case $1 in
 		echo 0
 		;;
 	sw)
-		eval $(php r99_2.php)
 		echo $WL1
 		echo $WL2
 		echo $UPTIME
@@ -63,8 +62,10 @@ case $1 in
 		echo 0
 		;;
 	moon)
-		echo $PWMA
-		echo $PWMD
+		echo $PWME5
+		echo $PWME4
+		#echo $PWMA
+		#echo $PWMD
 		echo $UPTIME
 		echo 0
 		;;

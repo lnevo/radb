@@ -208,6 +208,12 @@ $Mem_B_VinegarWeek=readByte(176-$FullVarsStart,$ra_mem_full);
 $Mem_B_MaintVinegar=readByte(177-$FullVarsStart,$ra_mem_full);
 $Mem_B_EnableStorm=readByte(178-$FullVarsStart,$ra_mem_full);
 $Mem_B_ForceRandomTide=readByte(179-$FullVarsStart,$ra_mem_full);
+$Mem_I_AWCTime=readInt(180-$FullVarsStart,$ra_mem_full);
+$Mem_I_AWCFrequency=readInt(182-$FullVarsStart,$ra_mem_full);
+$Mem_I_AWCOffset=readInt(184-$FullVarsStart,$ra_mem_full);
+$Mem_I_MixTime=readInt(186-$FullVarsStart,$ra_mem_full);
+$Mem_I_MixFrequency=readInt(188-$FullVarsStart,$ra_mem_full);
+$Mem_B_FlushTime=readByte(190-$FullVarsStart,$ra_mem_full);
 
 $Mem_B_ResetMemory=readByte(199-$FullVarsStart,$ra_mem_full);
 $FullVarsEnd=200;

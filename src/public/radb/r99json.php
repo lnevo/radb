@@ -7,11 +7,6 @@
 		$url = ($val == "") ? $url : $url . "," . $val;
 		return $url;
 	}
-	function urlMaker_2($cmd,$val){
-		$url = $GLOBALS['RAURL2'] . $cmd;
-		$url = ($val == "") ? $url : $url . "," . $val;
-		return $url;
-	}
 	function applyMasks($a,$b,$c) {
 		$a &= $c;		
 		$a |= $b;
@@ -23,35 +18,39 @@
 	}
 
 	$xml = new SimpleXMLElement(urlMaker($_POST["cmd"],$_POST["val"]), null, true);
-        $xml2 = new SimpleXMLElement($GLOBALS['RAURL2'] . 'r99', null, true);
 
-  	$RBIN=getBin($xml->{'R'});
-        $RON=getBin($xml->{'RON'});
-        $ROFF=getBin($xml->{'ROFF'});
-        $RMASK=applyMasks($xml->{'R'},$xml->{'RON'},$xml->{'ROFF'});
+#  	$RBIN=getBin($xml->{'R'});
+#   $RON=getBin($xml->{'RON'});
+#   $ROFF=getBin($xml->{'ROFF'});
+#   $RMASK=applyMasks($xml->{'R'},$xml->{'RON'},$xml->{'ROFF'});
 
 	$RBIN1=getBin($xml->{'R1'});
-        $RON1=getBin($xml->{'RON1'});
-        $ROFF1=getBin($xml->{'ROFF1'});
+    $RON1=getBin($xml->{'RON1'});
+    $ROFF1=getBin($xml->{'ROFF1'});
 	$RMASK1=applyMasks($xml->{'R1'},$xml->{'RON1'},$xml->{'ROFF1'});
 
-	$RBIN1_2=getBin($xml2->{'R1'});
-        $RON1_2=getBin($xml2->{'RON1'});
-        $ROFF1_2=getBin($xml2->{'ROFF1'});
-	$RMASK1_2=applyMasks($xml2->{'R1'},$xml2->{'RON1'},$xml2->{'ROFF1'});
-
   	$RBIN2=getBin($xml->{'R2'});
-        $RON2=getBin($xml->{'RON2'});
-        $ROFF2=getBin($xml->{'ROFF2'});
+    $RON2=getBin($xml->{'RON2'});
+    $ROFF2=getBin($xml->{'ROFF2'});
 	$RMASK2=applyMasks($xml->{'R2'},$xml->{'RON2'},$xml->{'ROFF2'});
 
   	$RBIN3=getBin($xml->{'R3'});
-        $RON3=getBin($xml->{'RON3'});
-        $ROFF3=getBin($xml->{'ROFF3'});
+    $RON3=getBin($xml->{'RON3'});
+    $ROFF3=getBin($xml->{'ROFF3'});
 	$RMASK3=applyMasks($xml->{'R3'},$xml->{'RON3'},$xml->{'ROFF3'});
 
+  	$RBIN4=getBin($xml->{'R4'});
+    $RON4=getBin($xml->{'RON4'});
+    $ROFF4=getBin($xml->{'ROFF4'});
+	$RMASK4=applyMasks($xml->{'R4'},$xml->{'RON4'},$xml->{'ROFF4'});
+
+  	$RBIN5=getBin($xml->{'R5'});
+    $RON5=getBin($xml->{'RON5'});
+    $ROFF5=getBin($xml->{'ROFF5'});
+	$RMASK5=applyMasks($xml->{'R5'},$xml->{'RON5'},$xml->{'ROFF5'});
+
 	$relayData = array();
-  	$relayData["rbin"]=$RBIN;
+/*  	$relayData["rbin"]=$RBIN;
   	$relayData["relay1val"]=$RBIN[7];
 	$relayData["relay2val"]=$RBIN[6];
 	$relayData["relay3val"]=$RBIN[5];
@@ -84,7 +83,7 @@
 	$relayData["relay6status"]=$RMASK[2];
 	$relayData["relay7status"]=$RMASK[1];
 	$relayData["relay8status"]=$RMASK[0];
-
+*/
   	$relayData["rbin1"]=$RBIN1;
   	$relayData["relay11val"]=$RBIN1[7];
 	$relayData["relay12val"]=$RBIN1[6];
@@ -187,45 +186,78 @@
 	$relayData["relay37status"]=$RMASK3[1];
 	$relayData["relay38status"]=$RMASK3[0];
 
-  	$relayData2["rbin1"]=$RBIN1_2;
-  	$relayData2["relay11val"]=$RBIN1_2[7];
-	$relayData2["relay12val"]=$RBIN1_2[6];
-	$relayData2["relay13val"]=$RBIN1_2[5];
-	$relayData2["relay14val"]=$RBIN1_2[4];
-	$relayData2["relay15val"]=$RBIN1_2[3];
-	$relayData2["relay16val"]=$RBIN1_2[2];
-	$relayData2["relay17val"]=$RBIN1_2[1];
-	$relayData2["relay18val"]=$RBIN1_2[0];
-	$relayData2["relay11on"]=$RON1_2[7];
-	$relayData2["relay12on"]=$RON1_2[6];
-	$relayData2["relay13on"]=$RON1_2[5];
-	$relayData2["relay14on"]=$RON1_2[4];
-	$relayData2["relay15on"]=$RON1_2[3];
-	$relayData2["relay16on"]=$RON1_2[2];
-	$relayData2["relay17on"]=$RON1_2[1];
-	$relayData2["relay18on"]=$RON1_2[0];
-	$relayData2["relay11off"]=$ROFF1_2[7];
-	$relayData2["relay12off"]=$ROFF1_2[6];
-	$relayData2["relay13off"]=$ROFF1_2[5];
-	$relayData2["relay14off"]=$ROFF1_2[4];
-	$relayData2["relay15off"]=$ROFF1_2[3];
-	$relayData2["relay16off"]=$ROFF1_2[2];
-	$relayData2["relay17off"]=$ROFF1_2[1];
-	$relayData2["relay18off"]=$ROFF1_2[0];
-	$relayData2["relay11status"]=$RMASK1_2[7];
-	$relayData2["relay12status"]=$RMASK1_2[6];
-	$relayData2["relay13status"]=$RMASK1_2[5];
-	$relayData2["relay14status"]=$RMASK1_2[4];
-	$relayData2["relay15status"]=$RMASK1_2[3];
-	$relayData2["relay16status"]=$RMASK1_2[2];
-	$relayData2["relay17status"]=$RMASK1_2[1];
-	$relayData2["relay18status"]=$RMASK1_2[0];
+  	$relayData["rbin4"]=$RBIN4;
+  	$relayData["relay41val"]=$RBIN4[7];
+	$relayData["relay42val"]=$RBIN4[6];
+	$relayData["relay43val"]=$RBIN4[5];
+	$relayData["relay44val"]=$RBIN4[4];
+	$relayData["relay45val"]=$RBIN4[3];
+	$relayData["relay46val"]=$RBIN4[2];
+	$relayData["relay47val"]=$RBIN4[1];
+	$relayData["relay48val"]=$RBIN4[0];
+	$relayData["relay41on"]=$RON4[7];
+	$relayData["relay42on"]=$RON4[6];
+	$relayData["relay43on"]=$RON4[5];
+	$relayData["relay44on"]=$RON4[4];
+	$relayData["relay45on"]=$RON4[3];
+	$relayData["relay46on"]=$RON4[2];
+	$relayData["relay47on"]=$RON4[1];
+	$relayData["relay48on"]=$RON4[0];
+	$relayData["relay41off"]=$ROFF4[7];
+	$relayData["relay42off"]=$ROFF4[6];
+	$relayData["relay43off"]=$ROFF4[5];
+	$relayData["relay44off"]=$ROFF4[4];
+	$relayData["relay45off"]=$ROFF4[3];
+	$relayData["relay46off"]=$ROFF4[2];
+	$relayData["relay47off"]=$ROFF4[1];
+	$relayData["relay48off"]=$ROFF4[0];
+	$relayData["relay41status"]=$RMASK4[7];
+	$relayData["relay42status"]=$RMASK4[6];
+	$relayData["relay43status"]=$RMASK4[5];
+	$relayData["relay44status"]=$RMASK4[4];
+	$relayData["relay45status"]=$RMASK4[3];
+	$relayData["relay46status"]=$RMASK4[2];
+	$relayData["relay47status"]=$RMASK4[1];
+	$relayData["relay48status"]=$RMASK4[0];
+
+
+  	$relayData["rbin5"]=$RBIN5;
+  	$relayData["relay51val"]=$RBIN5[7];
+	$relayData["relay52val"]=$RBIN5[6];
+	$relayData["relay53val"]=$RBIN5[5];
+	$relayData["relay54val"]=$RBIN5[4];
+	$relayData["relay55val"]=$RBIN5[3];
+	$relayData["relay56val"]=$RBIN5[2];
+	$relayData["relay57val"]=$RBIN5[1];
+	$relayData["relay58val"]=$RBIN5[0];
+	$relayData["relay51on"]=$RON5[7];
+	$relayData["relay52on"]=$RON5[6];
+	$relayData["relay53on"]=$RON5[5];
+	$relayData["relay54on"]=$RON5[4];
+	$relayData["relay55on"]=$RON5[3];
+	$relayData["relay56on"]=$RON5[2];
+	$relayData["relay57on"]=$RON5[1];
+	$relayData["relay58on"]=$RON5[0];
+	$relayData["relay51off"]=$ROFF5[7];
+	$relayData["relay52off"]=$ROFF5[6];
+	$relayData["relay53off"]=$ROFF5[5];
+	$relayData["relay54off"]=$ROFF5[4];
+	$relayData["relay55off"]=$ROFF5[3];
+	$relayData["relay56off"]=$ROFF5[2];
+	$relayData["relay57off"]=$ROFF5[1];
+	$relayData["relay58off"]=$ROFF5[0];
+	$relayData["relay51status"]=$RMASK5[7];
+	$relayData["relay52status"]=$RMASK5[6];
+	$relayData["relay53status"]=$RMASK5[5];
+	$relayData["relay54status"]=$RMASK5[4];
+	$relayData["relay55status"]=$RMASK5[3];
+	$relayData["relay56status"]=$RMASK5[2];
+	$relayData["relay57status"]=$RMASK5[1];
+	$relayData["relay58status"]=$RMASK5[0];
 
 	$return = array();
 	$return["xml"] = $xml;
-	$return["xml2"] = $xml2;
 	$return["relays"] = $relayData;
-	$return["relays2"] = $relayData2;
 	
 	echo json_encode($return);
 ?>

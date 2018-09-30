@@ -1,8 +1,16 @@
 <?php
 
 $ra_labels = new SimpleXMLElement($GLOBALS['LabelURL'], null, true);
+#$ra2_labels = new SimpleXMLElement($GLOBALS['LabelURL2'], null, true);
 
-$T1N=$ra_labels->{'T1N'};
+$R11N2=$ra2_labels->{'R11N'};
+$R12N2=$ra2_labels->{'R12N'};
+$R13N2=$ra2_labels->{'R13N'};
+$R14N2=$ra2_labels->{'R14N'};
+$R15N2=$ra2_labels->{'R15N'};
+$R16N2=$ra2_labels->{'R16N'};
+$R17N2=$ra2_labels->{'R17N'};
+$R18N2=$ra2_labels->{'R18N'};
 
 $MYREEFANGELID=$ra_labels->{'MYREEFANGELID'};
 $T1N=$ra_labels->{'T1N'};
@@ -121,5 +129,4 @@ $RFIN=$ra_labels->{'RFIN'};
 $AIWN=$ra_labels->{'AIWN'};
 $AIBN=$ra_labels->{'AIBN'};
 $AIRBN=$ra_labels->{'AIRBN'};
-
 ?>

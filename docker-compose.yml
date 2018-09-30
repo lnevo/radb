@@ -1,5 +1,6 @@
 web:
   image: lnevo/nginx
+  restart: always
   ports:
     - "80:80"
   volumes:
@@ -8,7 +9,6 @@ web:
     - ./src/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
   links:
     - php
-  restart: always
 php:
   image: nmcteam/php56
   volumes:
@@ -18,10 +18,10 @@ php:
   restart: always
 mrtg:
   image: lnevo/mrtg
+  restart: always
   volumes:
     - ./src/public:/www
     - ./src/bin:/root/bin
     - ./src/crontab:/cron/crontab
     - ./src/mrtg.cfg:/www/mrtg/mrtg.cfg
     - ./src/config.php:/www/radb/config.php
-  restart: always

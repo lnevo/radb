@@ -67,15 +67,15 @@
 
 	var timer;
 	function getFishcam() {
-		$("#fishcam").attr("src", "<?= $GLOBALS['RACAM2']; ?>");
-		timer = setTimeout(getFishcam,500);
+		$("#fishcam").attr("src", "<?= $GLOBALS['RACAM2']; ?>" + "?abc=" + new Date().getTime());
+		timer = setTimeout(getFishcam,1500);
 	}
 
 	$(function() {
 
 		$("#fishcam").click(function() {
 			if( timer == null ) {
-			  timer = setTimeout(getFishcam, 500);
+			  timer = setTimeout(getFishcam, 1500);
 			} else {
 			  clearTimeout(timer); 
 			  timer = null;

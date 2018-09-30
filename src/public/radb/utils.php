@@ -152,6 +152,39 @@ EOD;
     return $str;    
   }
 
+  function relay2LED($id,$value,$status) {
+    if ($value==1) {
+      if ($status==0) {
+        $str = "images/green-led-off.png";
+      } else {
+      	 $str = "images/green-led-on.png";
+      }
+    } else {
+      if ($status==0) {
+         $str = "images/red-led-off.png";
+      } else { 
+         $str = "images/red-led-on.png";
+      }
+    }
+
+    if ($value==0) {
+      if ($status==0) {
+        $cmd=1;
+      } else {
+        $cmd=2;
+      }
+    } else {
+      if ($status==0) {
+        $cmd=2;
+      } else {
+        $cmd=0;
+      }
+    }
+
+    $str = "<img src=\"" . $str . "\" class=\"relayToggle relayLED\" id=\"relay2" . $id . "\" data-cmd=\"r" . $id . $cmd . "\" />";
+    return $str;    
+  }
+
   function echoTideModes($mode) {
   
   $values = array("ReefCrest"=>"0",

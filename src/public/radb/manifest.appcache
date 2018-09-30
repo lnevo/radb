@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# Version 0.0.133
+# Version 0.0.154
 
 CACHE:
 
@@ -9,16 +9,6 @@ CACHE:
 /radb/images/red-led-off.png
 /radb/images/webcam.jpg
 /radb/images/webcam2.jpg
-
-#internal HTML documents
-/mrtg/dosing.html
-/mrtg/ph.html
-/mrtg/pwm.html
-/mrtg/radb_index.html
-/mrtg/rf.html
-/mrtg/sal.html
-/mrtg/temp.html
-/mrtg/wl.html
 
 #style sheets
 /radb/css/add2home.css
