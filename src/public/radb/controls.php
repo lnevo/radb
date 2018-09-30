@@ -78,6 +78,7 @@
                	  <?= ajaxButton("RefillATOOff","Stop ATO Refill","r312",""); ?>
   		          </form>
              	  <?= ajaxForm("ATO Rate Alarm","RateAlarmAjax","setRateAlarmAjax",$Mem_B_RateAlarm,"mb142"); ?>
+             	  <?= ajaxForm("RO Solenoid Flush Time","FlushTimeAjax","setFlushTimeAjax",$Mem_B_FlushTime,"mb190"); ?>
               </div>
             </div>
           </div>
@@ -97,6 +98,12 @@
 		  
             	</form>
              	  <?= ajaxForm("Fill Time","WCFillTimeAjax","setWCFillTimeAjax",$Mem_I_WCFillTime,"mi106"); ?>
+				  <p>Mixing Station Settings:<br>
+             	  <?= ajaxForm("Mix Time","MixTimeAjax","setMixTimeAjax",$Mem_I_MixTime,"mi186"); ?>
+             	  <?= ajaxForm("Mix Frequency","MixTFreqAjax","setMixFreqAjax",$Mem_I_MixFrequency,"mi188"); ?>
+             	  <?= ajaxForm("AWC Time","AWCTimeAjax","setAWCTimeAjax",$Mem_I_AWCTime,"mi180"); ?>
+             	  <?= ajaxForm("AWC Frequency","AWCTFreqAjax","setAWCFreqAjax",$Mem_I_AWCFrequency,"mi182"); ?>
+             	  <?= ajaxForm("AWC Offset","AWCOffsetAjax","setOffsetAjax",$Mem_I_AWCOffset,"mi184"); ?>
               </div>
             </div>
           </div>
