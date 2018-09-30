@@ -21,6 +21,7 @@
 
   $ATOLOW=$xml->{'ATOLOW'};
   $ATOHIGH=$xml->{'ATOHIGH'};
+  $ALARM=$xml->{'ALARM'};
   $RFM=$xml->{'RFM'};
   $RFS=$xml->{'RFS'};
   $RFD=$xml->{'RFD'};

@@ -64,6 +64,9 @@
   #atohigh {
     width: 35px;
   }
+  #alarm {
+    width: 35px;
+  }
   #sumpalarm {
     width: 15%;
   }
@@ -200,16 +203,10 @@
     
     <div class="well well-small">
       <div class="row-fluid">
-        <div class="span8 offset2" id="fcrow">
+        <div id="fcrow">
           <IMG SRC="images/webcam.jpg" id="fishcam">
-          <p>
-        </div>
-      </div>
-      <div class="row-fluid">
-        <div class="span8 offset2" id="fcrow">
           <IMG SRC="images/webcam2.jpg" id="sumpcam">
-          <p>
-        </div>
+		</div>
       </div>
     </div>
     <div class="tab-content">
@@ -243,22 +240,6 @@
 
         
         <div class="hidden-phone">
-          <div class="well well-small" id="atoBar">
-            <div class="row-fluid">
-              <div class="span2 offset3">
-                <h5>
-                  ATO Low
-                </h5>
-                <?= switchStatus($ATOLOW,'atolow'); ?>
-              </div>
-              <div class="span2 offset2">
-                <h5>
-                  ATO High
-                </h5>
-                <?= switchStatus($ATOHIGH,'atohigh'); ?>
-              </div>
-            </div>
-          </div>
           <div class="well well-small">
             <div class="row-fluid">
               <div class="span4">
@@ -281,6 +262,26 @@
                 <canvas id="ph" width="250" height="250">
                   [No canvas support]
                 </canvas>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="span2 offset2">
+                <h5>
+                  ATO Low
+                </h5>
+                <?= switchStatus($ATOLOW,'atolow'); ?>
+              </div>
+              <div class="span2 offset1">
+                <h5>
+                  ATO High
+                </h5>
+                <?= switchStatus($ATOHIGH,'atohigh'); ?>
+              </div>
+              <div class="span2 offset1">
+                <h5>
+                  Skimmate Locker
+                </h5>
+                <?= switchStatus($ALARM,'alarm'); ?>
               </div>
             </div>
             <div class="row-fluid">

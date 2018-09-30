@@ -120,6 +120,7 @@ $PWMD1N=$ra_labels->{'PWMD1N'};
 $PWMD2N=$ra_labels->{'PWMD2N'};
 $ATOLOWN=$ra_labels->{'ATOLOWN'};
 $ATOHIGHN=$ra_labels->{'ATOHIGHN'};
+$ALARMN=$ra_labels->{'ALARMN'};
 $RFWN=$ra_labels->{'RFWN'};
 $RFRBN=$ra_labels->{'RFRBN'};
 $RFRN=$ra_labels->{'RFRN'};
