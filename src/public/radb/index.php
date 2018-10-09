@@ -1,6 +1,5 @@
 <?php include('config.php'); ?>
 <?php include('utils.php'); ?>
-<?php include('all_data.php'); ?>
 <?php include('ra_labels.php'); ?>
 
 <!DOCTYPE html>
@@ -269,19 +268,19 @@
                 <h5>
                   ATO Low
                 </h5>
-                <?= switchStatus($ATOLOW,'atolow'); ?>
+                <?= switchStatus("",'atolow'); ?>
               </div>
               <div class="span2 offset1">
                 <h5>
                   ATO High
                 </h5>
-                <?= switchStatus($ATOHIGH,'atohigh'); ?>
+                <?= switchStatus("",'atohigh'); ?>
               </div>
               <div class="span2 offset1">
                 <h5>
                   Skimmate Locker
                 </h5>
-                <?= switchStatus($ALARM,'alarm'); ?>
+                <?= switchStatus("",'alarm'); ?>
               </div>
             </div>
             <div class="row-fluid">
@@ -368,42 +367,42 @@
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("11",$relay11val,$relay11status); ?>
+                  <?= relayLED("11","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("12",$relay12val,$relay12status); ?>
+                  <?= relayLED("12","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("13",$relay13val,$relay13status); ?>
+                  <?= relayLED("13","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("14",$relay14val,$relay14status); ?>
+                  <?= relayLED("14","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("15",$relay15val,$relay15status); ?>
+                  <?= relayLED("15","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("16",$relay16val,$relay16status); ?>
+                  <?= relayLED("16","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("17",$relay17val,$relay17status); ?>
+                  <?= relayLED("17","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("18",$relay18val,$relay18status); ?>
+                  <?= relayLED("18","",""); ?>
                   
                 </div>
               </div>
@@ -461,42 +460,42 @@
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("21",$relay21val,$relay21status); ?>
+                  <?= relayLED("21","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("22",$relay22val,$relay22status); ?>
+                  <?= relayLED("22","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("23",$relay23val,$relay23status); ?>
+                  <?= relayLED("23","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("24",$relay24val,$relay24status); ?>
+                  <?= relayLED("24","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("25",$relay25val,$relay25status); ?>
+                  <?= relayLED("25","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("26",$relay26val,$relay26status); ?>
+                  <?= relayLED("26","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("27",$relay27val,$relay27status); ?>
+                  <?= relayLED("27","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("28",$relay28val,$relay28status); ?>
+                  <?= relayLED("28","",""); ?>
                   
                 </div>
               </div>
@@ -554,42 +553,42 @@
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("31",$relay31val,$relay31status); ?>
+                  <?= relayLED("31","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("32",$relay32val,$relay32status); ?>
+                  <?= relayLED("32","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("33",$relay33val,$relay33status); ?>
+                  <?= relayLED("33","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("34",$relay34val,$relay34status); ?>
+                  <?= relayLED("34","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("35",$relay35val,$relay35status); ?>
+                  <?= relayLED("35","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("36",$relay36val,$relay36status); ?>
+                  <?= relayLED("36","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("37",$relay37val,$relay37status); ?>
+                  <?= relayLED("37","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("38",$relay38val,$relay38status); ?>
+                  <?= relayLED("38","",""); ?>
                   
                 </div>
               </div>
@@ -647,42 +646,42 @@
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("41",$relay41val,$relay41status); ?>
+                  <?= relayLED("41","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("42",$relay42val,$relay42status); ?>
+                  <?= relayLED("42","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("43",$relay43val,$relay43status); ?>
+                  <?= relayLED("43","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("44",$relay44val,$relay44status); ?>
+                  <?= relayLED("44","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("45",$relay55val,$relay45status); ?>
+                  <?= relayLED("45","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("46",$relay46val,$relay46status); ?>
+                  <?= relayLED("46","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("47",$relay47val,$relay47status); ?>
+                  <?= relayLED("47","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("48",$relay48val,$relay48status); ?>
+                  <?= relayLED("48","",""); ?>
                   
                 </div>
               </div>
@@ -740,42 +739,42 @@
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("51",$relay51val,$relay51status); ?>
+                  <?= relayLED("51","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("52",$relay52val,$relay52status); ?>
+                  <?= relayLED("52","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("53",$relay53val,$relay53status); ?>
+                  <?= relayLED("53","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("54",$relay54val,$relay54status); ?>
+                  <?= relayLED("54","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("55",$relay55val,$relay55status); ?>
+                  <?= relayLED("55","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("56",$relay56val,$relay56status); ?>
+                  <?= relayLED("56","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("57",$relay57val,$relay57status); ?>
+                  <?= relayLED("57","",""); ?>
                   
                 </div>
                 <div class="span1">
                   
-                  <?= relayLED("58",$relay58val,$relay58status); ?>
+                  <?= relayLED("58","",""); ?>
                   
                 </div>
               </div>
@@ -1284,14 +1283,6 @@
                   MRTG Graphs
                 </A>
                 <BR>
-                <A HREF="<?= $GLOBALS['RTRoot'] ?>/reefangel-status">
-                  Reeftronics Status
-                </A>
-                <BR>
-                <A HREF="<?= $GLOBALS['RTRoot'] ?>/reefangel-history">
-                  Reeftronics History
-                </A>
-                <BR>
                 <A HREF="http://www.aquaticlog.com/aquarium/aquariums?aquariumId=2982">
                   AquaticLog.com
                 </A>
@@ -1394,13 +1385,13 @@ Howdy, I'm in Section 2.
     var sumpcamURL="<?=$GLOBALS['RACAM2']; ?>";
     var localStg=false;
 
-    var gauge = new RGraph.Gauge('speed', 0, 100, [<?= $RFS; ?>,<?= $Mem_B_RFSpeed; ?>,<?= $CustomVar[4]; ?>]);
-    var mode_gauge = new RGraph.Gauge('mode', 0, 15, [<?= $RFM; ?>,<?= $Mem_B_RFMode; ?>,<?= $Mem_B_TideMode; ?>]);
-    var dur_gauge = new RGraph.Gauge('duration', 0, 20, [<?= $RFD; ?>,<?= $Mem_B_RFDuration; ?>]);
-    var wl_gauge = new RGraph.Gauge('wl', 0, 100, <?= $WL; ?>);
-    var moon_gauge = new RGraph.Gauge('moon', 0, 100, [<?= $PWMA; ?>,<?= $PWMD; ?>,<?= $PWME0; ?>,<?= $PWME1; ?>,<?= $PWME2; ?>,<?= $PWME3; ?>]);
-    var dt_temp = new RGraph.Gauge('dt', 70, 85, [<?= $T1/10; ?>,<?= $T2/10; ?>,<?= $T3/10; ?>]);
-    var ph_gauge = new RGraph.Gauge('ph', 7, 9, <?= $PH/100; ?>);
+    var gauge = new RGraph.Gauge('speed', 0, 100,0,0,0);
+    var mode_gauge = new RGraph.Gauge('mode', 0, 15, 0,0,0);
+    var dur_gauge = new RGraph.Gauge('duration', 0, 20,0,0);
+    var wl_gauge = new RGraph.Gauge('wl', 0, 100,0);
+    var moon_gauge = new RGraph.Gauge('moon', 0, 100,0,0,0,0,0,0);
+    var dt_temp = new RGraph.Gauge('dt', 70, 85,0,0);
+    var ph_gauge = new RGraph.Gauge('ph', 7, 9, 0);
 
     if(typeof(Storage)!=="undefined")
     {
@@ -1643,6 +1634,28 @@ function refreshAllData(data) {
 	drawSpeedGauge();
 	drawModeGauge();
 	drawDurGauge();
+
+	for (var key in data.xml) {
+       	 $("[data-xml-key='" + key + "']").text(data.xml[key]);
+       	 $("[data-xml-key='" + key + "']").val(data.xml[key]);
+	}
+
+	for (var key in data.mem) {
+       	 $("[data-mem-key='" + key + "']").text(data.mem[key]);
+       	 $("[data-mem-key='" + key + "']").val(data.mem[key]);
+	 $str = "OFF";
+         if (data.mem[key])
+            $str = "ON";
+       	 $("[data-mem-status-key='" + key + "']").text($str);
+	}
+
+	for (var key in data.info) {
+       	 $("[data-info-key='" + key + "']").text(data.info[key]);
+       	 $("[data-info-key='" + key + "']").val(data.info[key]);
+	}
+
+	$("#rfmode").val(data.mem["Mem_B_RFMode"]).attr('selected','selected');
+	$("#TideMode").val(data.mem["Mem_B_TideMode"]).attr('selected','selected');
 }
 
 function refreshData(data) {
@@ -1698,6 +1711,7 @@ function refreshData(data) {
     updateRelay("58",data.relays.relay58val,data.relays.relay58on,data.relays.relay58off);
     updateATO('atolow',data.xml.ATOLOW);
     updateATO('atohigh',data.xml.ATOHIGH);
+    updateATO('alarm',data.xml.ALARM);
 
     $("#T1Label").text("T1: " + data.xml.T1/10 + " degrees");
     $("#T1Bar").width(data.xml.T1/10+'%');
@@ -1726,8 +1740,7 @@ function refreshData(data) {
     $("#PWMDBar").width(data.xml.PWMD+'%');
 
     updateFishcam(); 
-
-          }
+}
 
       function updateATO(id,value) {
         $("#"+id).attr("src",atoIMG(value));
@@ -1857,7 +1870,7 @@ function refreshData(data) {
       $("#sumpcam").attr("src", sumpcamURL + "?abc=" + new Date().getTime());
     }
 
-    $(function() {
+$(function() {
       allCacheData();
       drawWLGauge();
       drawPWMGauge();
@@ -1871,36 +1884,29 @@ function refreshData(data) {
       function getFishcam() {
       	updateFishcam();
         timer = setTimeout(getFishcam,500);
-      } $("#fishcam").click(function() {
+      } 
+
+      $("#fishcam").click(function() {
         if( timer == null ) {
           timer = setTimeout(getFishcam, 500);
-        }
-        else {
+        } else {
           clearTimeout(timer);
-          
           timer = null;
         }
       });
       
       $("form").submit(function(e) {
         e.preventDefault();
-      }
-                      );
-      $("#ResetMemory").click(function() {
-        goToPage('reset.php');
-      }
-                             );
-      $("#r99").click(function() {
-        goToPage('r99.php');
-      }
-                     );
+      });
 
     function allCacheData() {
       $.ajax({
           type: "POST",
           url: "all_data_json.php",
           dataType:'json', // add json datatype to get json
-          data: ({urlvar: 'R99cache'}),
+          data: ({
+		urlvar: 'R99cache'
+		}),
           success: function(data) {
     		refreshAllData(data);
           }	
@@ -1914,7 +1920,9 @@ function refreshData(data) {
           type: "POST",
           url: "all_data_json.php",
           dataType:'json', // add json datatype to get json
-          data: ({urlvar: 'RAURL', urlarg: 'r99'}),
+          data: ({
+		urlvar: 'RAURL', 
+		cmd: 'r99'}),
           success: function(data) {
     		refreshAllData(data);
           }	
@@ -1963,7 +1971,8 @@ function refreshData(data) {
             $('#controlstab').html(data);
             updateFishcam(); 
             feedback.text(oldL);
-          }
+	    allData();
+	}
         }); 
       });
 
@@ -1983,8 +1992,9 @@ function refreshData(data) {
         var that = this;
         $.ajax({
           type: "POST",
-          url: "ra_cmd.php",
+          url: "all_data_json.php",
           data: {
+            urlvar: 'RAURL', 
             cmd: cmd, val: val }
           ,
           success: function(data) {
@@ -1999,13 +2009,10 @@ function refreshData(data) {
           }
           ,
           dataType: "json"
-        }
-              );
-      }
-                            );
+        });
+      });
       
 	$(document).on("click", ".ajax-button",function(e) {    
-//      $(".ajax-button").click(function(e) {
       	e.preventDefault();
         var cmd = $(this).attr('data-cmd');
         var val = $(this).val();
@@ -2024,8 +2031,9 @@ function refreshData(data) {
         var that = this;
         $.ajax({
           type: "POST",
-          url: "ra_cmd.php",
+          url: "all_data_json.php",
           data: {
+            urlvar: 'RAURL', 
             cmd: cmd, val: val }
           ,
           success: function(data) {
@@ -2042,10 +2050,8 @@ function refreshData(data) {
           }
           ,
           dataType: "json"
-        }
-              );
-      }
-                             );
+        });
+      });
       
       $(".relayToggle").click(function() {
 	if(this.id=="RelayTab" || this.id=="phoneRelayTab") {
@@ -2058,8 +2064,9 @@ function refreshData(data) {
         
         $.ajax({
           type: "POST",
-          url: "r99json.php",
+          url: "all_data_json.php",
           data: {
+            urlvar: 'RAURL', 
             cmd: $(this).attr("data-cmd"), 
             url: $(this).attr("url") }
           ,
@@ -2084,8 +2091,7 @@ function refreshData(data) {
 	}
       }
 
-    }
-     );
+    });
 </script>
   
 <script type="text/javascript">

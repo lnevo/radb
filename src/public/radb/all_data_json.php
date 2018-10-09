@@ -4,47 +4,37 @@
 <?php
 
  $cachexml = new SimpleXMLElement($GLOBALS['AllCache'], null, true);
- $xml = new SimpleXMLElement($GLOBALS[$_POST['urlvar']] . $_POST['urlarg'], null, true);
-
-	function applyMasks($a,$b,$c) {
-		$a &= $c;		
-		$a |= $b;
-		return str_pad(decbin($a),8,"0",STR_PAD_LEFT);
-	}	
-	
-	function getBin($a) {
-		return str_pad(decbin($a),8,"0",STR_PAD_LEFT);
-        }
+ $xml = new SimpleXMLElement(urlMaker($_POST['urlvar'],$_POST["cmd"],$_POST["val"]), null, true);
 
 #  	$RBIN=getBin($xml->{'R'});
-#        $RON=getBin($xml->{'RON'});
-#        $ROFF=getBin($xml->{'ROFF'});
-#        $RMASK=applyMasks($xml->{'R'},$xml->{'RON'},$xml->{'ROFF'});
+#       $RON=getBin($xml->{'RON'});
+#       $ROFF=getBin($xml->{'ROFF'});
+#       $RMASK=applyMasks($xml->{'R'},$xml->{'RON'},$xml->{'ROFF'});
 
 	$RBIN1=getBin($xml->{'R1'});
-    $RON1=getBin($xml->{'RON1'});
-    $ROFF1=getBin($xml->{'ROFF1'});
+        $RON1=getBin($xml->{'RON1'});
+        $ROFF1=getBin($xml->{'ROFF1'});
 	$RMASK1=applyMasks($xml->{'R1'},$xml->{'RON1'},$xml->{'ROFF1'});
 
   	$RBIN2=getBin($xml->{'R2'});
-    $RON2=getBin($xml->{'RON2'});
-    $ROFF2=getBin($xml->{'ROFF2'});
+        $RON2=getBin($xml->{'RON2'});
+        $ROFF2=getBin($xml->{'ROFF2'});
 	$RMASK2=applyMasks($xml->{'R2'},$xml->{'RON2'},$xml->{'ROFF2'});
 
   	$RBIN3=getBin($xml->{'R3'});
-    $RON3=getBin($xml->{'RON3'});
-    $ROFF3=getBin($xml->{'ROFF3'});
+        $RON3=getBin($xml->{'RON3'});
+        $ROFF3=getBin($xml->{'ROFF3'});
 	$RMASK3=applyMasks($xml->{'R3'},$xml->{'RON3'},$xml->{'ROFF3'});
 
-    $RBIN4=getBin($xml->{'R4'});
-    $RON4=getBin($xml->{'RON4'});
-    $ROFF4=getBin($xml->{'ROFF4'});
-    $RMASK4=applyMasks($xml->{'R4'},$xml->{'RON4'},$xml->{'ROFF4'});
+        $RBIN4=getBin($xml->{'R4'});
+        $RON4=getBin($xml->{'RON4'});
+        $ROFF4=getBin($xml->{'ROFF4'});
+        $RMASK4=applyMasks($xml->{'R4'},$xml->{'RON4'},$xml->{'ROFF4'});
 
-    $RBIN5=getBin($xml->{'R5'});
-    $RON5=getBin($xml->{'RON5'});
-    $ROFF5=getBin($xml->{'ROFF5'});
-    $RMASK5=applyMasks($xml->{'R5'},$xml->{'RON5'},$xml->{'ROFF5'});
+        $RBIN5=getBin($xml->{'R5'});
+        $RON5=getBin($xml->{'RON5'});
+        $ROFF5=getBin($xml->{'ROFF5'});
+        $RMASK5=applyMasks($xml->{'R5'},$xml->{'RON5'},$xml->{'ROFF5'});
 
 	$relayData = array();
   /*	$relayData["rbin"]=$RBIN;
@@ -468,10 +458,58 @@ $memData["Mem_I_PHEControlOn"]=readInt($VarsStart+165,$ra_mem_full);
 $memData["Mem_I_PHEControlOff"]=readInt($VarsStart+167,$ra_mem_full);
 $VarsEnd=$VarsStart+169;
 
-	$return = array();
-	$return["xml"] = $xml;
-	$return["mem"] = $memData;
-	$return["relays"] = $relayData;
-	
-	echo json_encode($return);
+$info = array();
+$info["USAGE"]=$xml->{'C6'} > 0 ? round(($xml->{'WL'}-10)/$xml->{'C6'}) : "INF";
+$info["SUNRISE"]=$memData["Mem_B_StdLightsOnHour"]-($memData["Mem_B_ActinicOffset"]/60) . ':' . $memData["Mem_B_StdLightsOnMinute"];
+$info["SUNSET"]=$memData["Mem_B_StdLightsOffHour"]+($memData["Mem_B_ActinicOffset"]/60) . ':' . $memData["Mem_B_StdLightsOffMinute"];
+$info["DP1Rate"]=number_format(($memData["Mem_I_CalDP1Vol"] / $memData["Mem_I_CalDP1Time"] * 60),2);
+$info["DP2Rate"]=number_format(($memData["Mem_I_CalDP2Vol"] / $memData["Mem_I_CalDP2Time"] * 60),2);
+$info["DP3Rate"]=number_format(($memData["Mem_I_CalDP3Vol"] / $memData["Mem_I_CalDP3Time"] * 60),2);
+
+      $values = array(
+      "Constant"=>"0",
+      "Lagoon"=>"1",
+      "Reef Crest"=>"2",
+      "Short Pulse"=>"3",
+      "Long Pulse"=>"4",
+      "Smart NTM"=>"5",
+      "Tidal Swell"=>"6",
+      "Feeding"=>"7",
+      "Night"=>"9",
+      "Storm"=>"10",
+      "Custom"=>"11",
+      );
+
+      foreach ($values as $key => $value) {
+        if ( $value == $memData["Mem_B_RFMode"] ) {
+          $info["RFMODE"]=$key;
+        }
+      }
+
+      $tidevalues = array(
+	"ReefCrest"=>"0",
+        "TidalSwell"=>"1",
+        "Smart_NTM"=>"2",
+        "Lagoon"=>"3",
+        "Short Pulse"=>"4",
+        "Long Pulse"=>"5",
+        "BHazard"=>"6",
+        "Else"=>"7",
+        "Sine"=>"8",
+        "Constant"=>"9"
+      );
+
+      foreach ($tidevalues as $key => $value) {
+        if ( $value == $memData["Mem_B_TideMode"] ) {
+          $info["CUSTOMMODE"]=$key;
+        }
+      }
+
+$return = array();
+$return["xml"] = $xml;
+$return["info"] = $info;
+$return["mem"] = $memData;
+$return["relays"] = $relayData;
+
+echo json_encode($return);
 ?>

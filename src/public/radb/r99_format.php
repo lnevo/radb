@@ -1,3 +1,9 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+ini_set("allow_url_fopen", 1);
+error_reporting(E_ALL);
+?>
 <?php include('config.php'); ?>
 <?php include('utils.php'); ?>
 
@@ -26,15 +32,19 @@
 
 <?php
 
-	$xml = new SimpleXMLElement($GLOBALS['RAURL'] . 'r99', null, true);
+$json = file_get_contents($GLOBALS['WEBROOT'] . "radb/all_data_json.php");
+$someArray = json_decode($json, true);
 
-echo $xml;
-
-foreach($xml as $key => $value)
-{
-    echo $key . " = " . $value . "<br />\n";
+//  Scan through outer loop
+foreach ($someArray as $innerArray) {
+    //  Check type
+    if (is_array($innerArray)){
+        //  Scan through inner loop
+        foreach ($innerArray as $value => $key) {
+            echo $value . "=" . $key . "<br>";
+        }
+    }
 }
-
 
 ?>
 </body>

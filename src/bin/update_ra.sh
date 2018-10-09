@@ -1,9 +1,7 @@
 #!/bin/sh
 
 RAURL="http://xena.easte.net:2000"
-#RAURL2="http://xena.easte.net:2010"
 LABELURL="http://forum.reefangel.com/status/labels.aspx?id=lnevo"
-#LABEL2URL="http://forum.reefangel.com/status/labels.aspx?id=lnevo2"
 WGET=/usr/bin/wget
 
 cd /www/radb_data
@@ -20,4 +18,3 @@ RA_DATA=`cat r99.txt | sed 's/.....$//g'`
 
 echo "${RA_DATA}${FULL_MEM}</RA>" > all_data.txt.new && mv all_data.txt.new all_data.txt
 $WGET -O ra_labels.txt.new $LABELURL && mv ra_labels.txt.new ra_labels.txt
-#$WGET -O ra2_labels.txt.new $LABEL2URL && mv ra2_labels.txt.new ra2_labels.txt

@@ -1,5 +1,15 @@
 <?php
 
+        function applyMasks($a,$b,$c) {
+                $a &= $c;
+                $a |= $b;
+                return str_pad(decbin($a),8,"0",STR_PAD_LEFT);
+        }
+
+        function getBin($a) {
+                return str_pad(decbin($a),8,"0",STR_PAD_LEFT);
+        }
+
 	function collapse($id, $label) {
 		$str = <<<EOD
           <div class="accordion-group">
@@ -17,6 +27,31 @@ EOD;
 	return $str;
 }
 
+	function ajaxXMLForm($channel,$label,$input,$button,$value,$cmd) {
+		$str = <<<EOD
+		
+<form class="form-horizontal ajax-form" data-cmd="{$cmd}">
+	<div class="control-group">
+		<label class="control-label" for="{$input}">
+		<span>Ch${channel} - </span>
+		<span data-xml-key="$label"></span>%
+		</label>
+		<div class="controls">
+			<div class="input-append">
+				<input type="text" name="raVal" value="" data-xml-key=${value} class="input-medium" id="{$input}">
+				<button class="btn" id="{$button}" type=submit>Set</button>
+			</div>
+			<span class="feedback"></span>
+		</div>
+	</div>
+</form>		
+		
+EOD;
+
+		return $str;
+	}
+
+
 	function ajaxForm($label,$input,$button,$value,$cmd) {
 		$str = <<<EOD
 		
@@ -25,7 +60,7 @@ EOD;
 		<label class="control-label" for="{$input}">{$label}</label>
 		<div class="controls">
 			<div class="input-append">
-				<input type="text" name="raVal" value="{$value}" class="input-medium" id="{$input}">
+				<input type="text" name="raVal" value="" data-mem-key=${value} class="input-medium" id="{$input}">
 				<button class="btn" id="{$button}" type=submit>Set</button>
 			</div>
 			<span class="feedback"></span>
@@ -94,9 +129,12 @@ EOD;
   }
   
   function memStatus($status) {
-    $str = "OFF";
-    if ($status)
-    $str = "ON";
+    $str = <<<EOD
+    <span data-mem-status-key="$status"></span>
+EOD;
+//    $str = "OFF";
+//    if ($status)
+//    $str = "ON";
     
    return $str;
    // return $status;
@@ -185,7 +223,7 @@ EOD;
     return $str;    
   }
 
-  function echoTideModes($mode) {
+  function echoTideModes() {
   
   $values = array("ReefCrest"=>"0",
                   "TidalSwell"=>"1",
@@ -210,9 +248,6 @@ EOD;
   echo $str;
 	foreach ($values as $key => $value) {
 		echo "<option value=\"" . $value . "\"";
-		if ( $value == $mode ) {
-			echo " SELECTED";
-		}
 		echo ">" . $key . "</option>\n";
 	}
   $str = <<<EOD
@@ -227,7 +262,7 @@ EOD;
   }
 
 
-  function echoModes($mode) {
+  function echoModes() {
   
   $values = array("Constant"=>"0",
 			"Lagoon"=>"1",
@@ -253,9 +288,6 @@ EOD;
   echo $str;
 	foreach ($values as $key => $value) {
 		echo "<option value=\"" . $value . "\"";
-		if ( $value == $mode ) {
-			echo " SELECTED";
-		}
 		echo ">" . $key . "</option>\n";
 	}
   $str = <<<EOD
@@ -301,6 +333,13 @@ EOD;
     return $answer;
   }
   
-	
+  function urlMaker($var,$cmd,$val){
+    if ( $var == "RAURL" ) {
+      $url = $GLOBALS['RAURL'] . $cmd;
+      $url = ($val == "") ? $url : $url . "," . $val;
+    } else {
+      $url = $GLOBALS['R99cache'];
+    }
+    return $url;
+  }
 ?>
-

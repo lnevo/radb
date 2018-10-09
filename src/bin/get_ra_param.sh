@@ -3,7 +3,8 @@
 RADB=/www/radb
 cd $RADB
 
-eval $(php r99.php)
+#eval $(php r99.php)
+eval $(/root/bin/r99.sh 2>/dev/null)
 UPTIME=0
 
 case $1 in 

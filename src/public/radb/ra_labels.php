@@ -1,7 +1,6 @@
 <?php
 
 $ra_labels = new SimpleXMLElement($GLOBALS['LabelURL'], null, true);
-#$ra2_labels = new SimpleXMLElement($GLOBALS['LabelURL2'], null, true);
 
 $R11N2=$ra2_labels->{'R11N'};
 $R12N2=$ra2_labels->{'R12N'};
