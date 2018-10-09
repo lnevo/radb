@@ -1886,12 +1886,21 @@ $(function() {
         timer = setTimeout(getFishcam,500);
       } 
 
+      var refreshTimer;
+      function updateAllData() {
+	allData();
+        refreshTimer = setTimeout(updateAllData,3000);
+      }
+
       $("#fishcam").click(function() {
         if( timer == null ) {
           timer = setTimeout(getFishcam, 500);
+          refreshtimer = setTimeout(updateAllData, 3000);
         } else {
           clearTimeout(timer);
+          clearTimeout(refreshTimer);
           timer = null;
+	  refreshTimer = null;
         }
       });
       

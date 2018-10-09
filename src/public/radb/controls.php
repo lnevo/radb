@@ -26,6 +26,12 @@ error_reporting(E_ALL);
               	  <?= ajaxButton("clearOH","Clear Overheat","mo",""); ?>
               	</form>
   
+                        T1: <b><span data-xml-key="T1"></span></b> 
+                        T2: <b><span data-xml-key="T2"></span></b> 
+                        T3: <b><span data-xml-key="T3"></span></b> 
+                        SAL: <b><span data-xml-key="SAL"></span></b> 
+                        PH: <b><span data-xml-key="PH"></span></b> <p>
+
                         ATO level: <b><span data-xml-key="WL"></span>%</b> 
             		Usage: <b><span data-xml-key="C6"></span>%</b><br>
           		  Days Remaining: <b><span data-info-key="USAGE"></span></b>

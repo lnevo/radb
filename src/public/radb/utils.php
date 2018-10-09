@@ -28,12 +28,17 @@ EOD;
 }
 
 	function ajaxXMLForm($channel,$label,$input,$button,$value,$cmd) {
+		if ( is_numeric($channel) ) { 
+			$channel_name="Ch" . $channel;
+		} else {
+			$channel_name=$channel;
+		}
 		$str = <<<EOD
 		
 <form class="form-horizontal ajax-form" data-cmd="{$cmd}">
 	<div class="control-group">
 		<label class="control-label" for="{$input}">
-		<span>Ch${channel} - </span>
+		<span>${channel_name} - </span>
 		<span data-xml-key="$label"></span>%
 		</label>
 		<div class="controls">
