@@ -10,4 +10,4 @@ OLDVER=$VER
 (( VER += 1 ))
 
 echo "Updating version from 0.0.$OLDVER to 0.0.$VER"
-sed -i 's/0.0.$OLDVER/0.0.$VER/g' manifest.appcache
+sed -i "s/0.0.$OLDVER/0.0.$VER/g" manifest.appcache
