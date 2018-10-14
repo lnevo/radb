@@ -3,6 +3,7 @@
 cd /home/lnevo/radb/src/public/radb
 
 echo "Copying index-dev.php to index.php"
+cp index.php index.php.bak
 cat index-dev.php | sed 's/<html>/<html manifest=manifest.appcache>/g' > index.php
 
 VER=`grep Version manifest.appcache | awk -F. '{print $NF}'`

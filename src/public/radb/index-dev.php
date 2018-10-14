@@ -11,52 +11,41 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="initial-scale=1.0">
     <link rel="apple-touch-icon" href="images/icon.png" />
     <link rel="apple-touch-startup-image" href="" />
-    <meta name="viewport" content="initial-scale=1.0">
     <link href="css/bootstrap.css" rel="stylesheet">
-  
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
     <link rel="stylesheet" href="css/add2home.css">
     <script type="application/javascript" src="css/add2home.js"></script>
-  
-    <script src="css/jquery.min.js">
-    </script>
-    <script src="RGraph/libraries/RGraph.common.core.js" >
-    </script>
-    <script src="RGraph/libraries/RGraph.gauge.js" >
-    </script>
-    <!--[if lt IE 9]>
-<script src="RGraph/excanvas/excanvas.js">
-</script>
-<![endif]-->
+    <script src="css/jquery.min.js"></script>
+    <script src="RGraph/libraries/RGraph.common.core.js" ></script>
+    <script src="RGraph/libraries/RGraph.gauge.js" ></script>
+    <!--[if lt IE 9]><script src="RGraph/excanvas/excanvas.js"></script><![endif]-->
   
   <style type="text/css">
-	body {
+  body {
     margin-top: 20px;
   }
-  
   #statustab {
 	text-align: center;
   }
   #dt {
-    width: 80%;
+    width: 55%;
   }
   #ph {
-    width: 80%;
+    width: 55%;
+  }
+  #speed {
+    width: 55%;
   }
   #wl {
-    width: 80%;
+    width: 50%;
   }
   #moon {
-    width: 80%;
+    width: 50%;
   }
-  #test {
-    width: 90%;
-  }
-  
   #atolow {
     width: 35px;
   }
@@ -72,14 +61,18 @@
   #atoAlarm {
     width: 15%;
   }
-  
   #powerAlarm {
     width: 15%;
+  }
+  #mode {
+    width: 50%;
+  }
+  #duration {
+    width: 50%;
   }
   #fcrow {
     text-align: center;
   }
-  
   #relayBar1 {
     text-align: center;
   }
@@ -98,26 +91,15 @@
   #atoBar {
     text-align: center;
   }
-  .relayLED {
-    width: 35px;
-  }
   #relaytab {
     text-align: right;
+  }
+  .relayLED {
+    width: 35px;
   }
   .relayBarLabel {
     text-align: left;
   }
-  
-  #mode {
-    width: 80%;
-  }
-  #speed {
-    width: 80%;
-  }
-  #duration {
-    width: 80%;
-  }
-  
   .rr {
     width:100%;
     text-align: center;
@@ -134,8 +116,6 @@
   #refresh {
     width: 30px;
   }
-  ;
-  
   </style>
   </head>
   
@@ -203,8 +183,8 @@
     <div class="well well-small">
       <div class="row-fluid">
         <div id="fcrow">
-          <IMG SRC="images/webcam.jpg" id="fishcam">
-          <IMG SRC="images/webcam2.jpg" id="sumpcam">
+          <IMG width="49%" SRC="images/webcam.jpg" id="fishcam">
+          <IMG width="49%" SRC="images/webcam2.jpg" id="sumpcam">
 		</div>
       </div>
     </div>
@@ -256,8 +236,8 @@
                 </a>
                 
               </div>
+
               <div class="span4">
-                
                 <canvas id="ph" width="250" height="250">
                   [No canvas support]
                 </canvas>
@@ -265,21 +245,15 @@
             </div>
             <div class="row-fluid">
               <div class="span2 offset2">
-                <h5>
-                  ATO Low
-                </h5>
+                <h5>ATO Low</h5>
                 <?= switchStatus("",'atolow'); ?>
               </div>
               <div class="span2 offset1">
-                <h5>
-                  ATO High
-                </h5>
+                <h5>ATO High</h5>
                 <?= switchStatus("",'atohigh'); ?>
               </div>
               <div class="span2 offset1">
-                <h5>
-                  Skimmate Locker
-                </h5>
+                <h5>Skimmate Locker</h5>
                 <?= switchStatus("",'alarm'); ?>
               </div>
             </div>
@@ -322,90 +296,60 @@
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= $R11N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R12N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R13N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R14N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R15N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R16N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R17N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R18N; ?>
-                  
                 </div>
               </div>
+
               <div class="row-fluid">
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("11","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("12","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("13","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("14","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("15","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("16","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("17","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("18","",""); ?>
-                  
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -415,90 +359,60 @@
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= $R21N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R22N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R23N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R24N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R25N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R26N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R27N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R28N; ?>
-                  
                 </div>
               </div>
+
               <div class="row-fluid">
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("21","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("22","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("23","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("24","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("25","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("26","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("27","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("28","",""); ?>
-                  
                 </div>
               </div>
+
             </div>
           </div>
         
@@ -508,90 +422,60 @@
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= $R31N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R32N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R33N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R34N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R35N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R36N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R37N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R38N; ?>
-                  
                 </div>
               </div>
+
               <div class="row-fluid">
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("31","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("32","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("33","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("34","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("35","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("36","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("37","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("38","",""); ?>
-                  
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -601,90 +485,60 @@
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= $R41N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R42N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R43N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R44N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R45N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R46N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R47N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R48N; ?>
-                  
                 </div>
               </div>
+
               <div class="row-fluid">
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("41","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("42","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("43","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("44","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("45","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("46","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("47","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("48","",""); ?>
-                  
                 </div>
               </div>
+
             </div>
           </div>
 
@@ -694,90 +548,60 @@
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= $R51N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R52N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R53N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R54N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R55N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R56N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R57N; ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= $R58N; ?>
-                  
                 </div>
               </div>
+
               <div class="row-fluid">
                 <div class="span2">
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("51","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("52","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("53","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("54","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("55","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("56","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("57","",""); ?>
-                  
                 </div>
                 <div class="span1">
-                  
                   <?= relayLED("58","",""); ?>
-                  
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -785,484 +609,353 @@
         <div class="visible-phone">
           <div class="well well-small">
             <div class="relayBarLabel">
-              <h5>
-                Exp. Relay 1
-              </h5>
+              <h5>Relay 1</h5>
             </div>
             <div class="span1">
               <?= $R11N; ?>
               <div class="btn-group">
                 <?= relayButton("r11On","On","r111",""); ?>
                 <?= relayButton("r11Off","Off","r110",""); ?>
-                
                 <?= relayButton("r11Auto","Auto","r112",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R12N; ?>
               <div class="btn-group">
                 <?= relayButton("r12On","On","r121",""); ?>
                 <?= relayButton("r12Off","Off","r120",""); ?>
-                
                 <?= relayButton("r12Auto","Auto","r122",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R13N; ?>
               <div class="btn-group">
                 <?= relayButton("r13On","On","r131",""); ?>
                 <?= relayButton("r13Off","Off","r130",""); ?>
-                
                 <?= relayButton("r13Auto","Auto","r132",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R14N; ?>
               <div class="btn-group">
                 <?= relayButton("r14On","On","r141",""); ?>
                 <?= relayButton("r14Off","Off","r140",""); ?>
-                
                 <?= relayButton("r14Auto","Auto","r142",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R15N; ?>
               <div class="btn-group">
                 <?= relayButton("r15On","On","r151",""); ?>
                 <?= relayButton("r15Off","Off","r150",""); ?>
-                
                 <?= relayButton("r15Auto","Auto","r152",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R16N; ?>
               <div class="btn-group">
                 <?= relayButton("r16On","On","r161",""); ?>
                 <?= relayButton("r16Off","Off","r160",""); ?>
-                
                 <?= relayButton("r16Auto","Auto","r162",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R17N; ?>
               <div class="btn-group">
                 <?= relayButton("r17On","On","r171",""); ?>
                 <?= relayButton("r17Off","Off","r170",""); ?>
-                
                 <?= relayButton("r17Auto","Auto","r172",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R18N; ?>
               <div class="btn-group">
                 <?= relayButton("r18On","On","r181",""); ?>
                 <?= relayButton("r18Off","Off","r180",""); ?>
-                
                 <?= relayButton("r18Auto","Auto","r182",""); ?>
-                
               </div>
-              
             </div>
           </div>
           <div class="well well-small">
             <div class="relayBarLabel">
-              <h5>
-                Exp. Relay 2
-              </h5>
+              <h5>Relay 2</h5>
             </div>
             <div class="span1">
               <?= $R21N; ?>
               <div class="btn-group">
                 <?= relayButton("r21On","On","r211",""); ?>
                 <?= relayButton("r21Off","Off","r210",""); ?>
-                
                 <?= relayButton("r21Auto","Auto","r212",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R22N; ?>
               <div class="btn-group">
                 <?= relayButton("r22On","On","r221",""); ?>
                 <?= relayButton("r22Off","Off","r220",""); ?>
-                
                 <?= relayButton("r22Auto","Auto","r222",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R23N; ?>
               <div class="btn-group">
                 <?= relayButton("r23On","On","r231",""); ?>
                 <?= relayButton("r23Off","Off","r230",""); ?>
-                
                 <?= relayButton("r23Auto","Auto","r232",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R24N; ?>
               <div class="btn-group">
                 <?= relayButton("r24On","On","r241",""); ?>
                 <?= relayButton("r24Off","Off","r240",""); ?>
-                
                 <?= relayButton("r24Auto","Auto","r242",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R25N; ?>
               <div class="btn-group">
                 <?= relayButton("r25On","On","r251",""); ?>
                 <?= relayButton("r25Off","Off","r250",""); ?>
-                
                 <?= relayButton("r25Auto","Auto","r252",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R26N; ?>
               <div class="btn-group">
                 <?= relayButton("r26On","On","r261",""); ?>
                 <?= relayButton("r26Off","Off","r260",""); ?>
-                
                 <?= relayButton("r26Auto","Auto","r262",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R27N; ?>
               <div class="btn-group">
                 <?= relayButton("r27On","On","r271",""); ?>
                 <?= relayButton("r27Off","Off","r270",""); ?>
-                
                 <?= relayButton("r27Auto","Auto","r272",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R28N; ?>
               <div class="btn-group">
                 <?= relayButton("r28On","On","r281",""); ?>
                 <?= relayButton("r28Off","Off","r280",""); ?>
-                
                 <?= relayButton("r28Auto","Auto","r282",""); ?>
-                
               </div>
-              
             </div>
           </div>
           <div class="well well-small">
             <div class="relayBarLabel">
-              <h5>
-                Exp. Relay 3
-              </h5>
+              <h5>Relay 3</h5>
             </div>
             <div class="span1">
               <?= $R31N; ?>
               <div class="btn-group">
                 <?= relayButton("r31On","On","r311",""); ?>
                 <?= relayButton("r31Off","Off","r310",""); ?>
-                
                 <?= relayButton("r31Auto","Auto","r312",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R32N; ?>
               <div class="btn-group">
                 <?= relayButton("r32On","On","r321",""); ?>
                 <?= relayButton("r32Off","Off","r320",""); ?>
-                
                 <?= relayButton("r32Auto","Auto","r322",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R33N; ?>
               <div class="btn-group">
                 <?= relayButton("r33On","On","r331",""); ?>
                 <?= relayButton("r33Off","Off","r330",""); ?>
-                
                 <?= relayButton("r33Auto","Auto","r332",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R34N; ?>
               <div class="btn-group">
                 <?= relayButton("r34On","On","r341",""); ?>
                 <?= relayButton("r34Off","Off","r340",""); ?>
-                
                 <?= relayButton("r34Auto","Auto","r342",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R35N; ?>
               <div class="btn-group">
                 <?= relayButton("r35On","On","r351",""); ?>
                 <?= relayButton("r35Off","Off","r350",""); ?>
-                
                 <?= relayButton("r35Auto","Auto","r352",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R36N; ?>
               <div class="btn-group">
                 <?= relayButton("r36On","On","r361",""); ?>
                 <?= relayButton("r36Off","Off","r360",""); ?>
-                
                 <?= relayButton("r36Auto","Auto","r362",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R37N; ?>
               <div class="btn-group">
                 <?= relayButton("r37On","On","r371",""); ?>
                 <?= relayButton("r37Off","Off","r370",""); ?>
-                
                 <?= relayButton("r37Auto","Auto","r372",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R38N; ?>
               <div class="btn-group">
                 <?= relayButton("r38On","On","r381",""); ?>
                 <?= relayButton("r38Off","Off","r380",""); ?>
-                
                 <?= relayButton("r38Auto","Auto","r382",""); ?>
-                
               </div>
-              
             </div>
           </div>
           <div class="well well-small">
             <div class="relayBarLabel">
-              <h5>
-                Exp. Relay 4
-              </h5>
+              <h5>Relay 4</h5>
             </div>
             <div class="span1">
               <?= $R41N; ?>
               <div class="btn-group">
                 <?= relayButton("r41On","On","r411",""); ?>
                 <?= relayButton("r41Off","Off","r410",""); ?>
-                
                 <?= relayButton("r41Auto","Auto","r412",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R42N; ?>
               <div class="btn-group">
                 <?= relayButton("r42On","On","r421",""); ?>
                 <?= relayButton("r42Off","Off","r420",""); ?>
-                
                 <?= relayButton("r42Auto","Auto","r422",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R43N; ?>
               <div class="btn-group">
                 <?= relayButton("r43On","On","r431",""); ?>
                 <?= relayButton("r43Off","Off","r430",""); ?>
-                
                 <?= relayButton("r43Auto","Auto","r432",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R44N; ?>
               <div class="btn-group">
                 <?= relayButton("r44On","On","r441",""); ?>
                 <?= relayButton("r44Off","Off","r440",""); ?>
-                
                 <?= relayButton("r44Auto","Auto","r442",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R45N; ?>
               <div class="btn-group">
                 <?= relayButton("r45On","On","r451",""); ?>
                 <?= relayButton("r45Off","Off","r450",""); ?>
-                
                 <?= relayButton("r45Auto","Auto","r452",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R46N; ?>
               <div class="btn-group">
                 <?= relayButton("r46On","On","r461",""); ?>
                 <?= relayButton("r46Off","Off","r460",""); ?>
-                
                 <?= relayButton("r46Auto","Auto","r462",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R47N; ?>
               <div class="btn-group">
                 <?= relayButton("r47On","On","r471",""); ?>
                 <?= relayButton("r47Off","Off","r470",""); ?>
-                
                 <?= relayButton("r47Auto","Auto","r472",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R48N; ?>
               <div class="btn-group">
                 <?= relayButton("r48On","On","r481",""); ?>
                 <?= relayButton("r48Off","Off","r480",""); ?>
-                
                 <?= relayButton("r48Auto","Auto","r482",""); ?>
-                
               </div>
-              
             </div>
           </div>
           <div class="well well-small">
             <div class="relayBarLabel">
-              <h5>
-                Exp. Relay 5
-              </h5>
+              <h5>Relay 5</h5>
             </div>
             <div class="span1">
               <?= $R51N; ?>
               <div class="btn-group">
                 <?= relayButton("r51On","On","r511",""); ?>
                 <?= relayButton("r51Off","Off","r510",""); ?>
-                
                 <?= relayButton("r51Auto","Auto","r512",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R52N; ?>
               <div class="btn-group">
                 <?= relayButton("r52On","On","r521",""); ?>
                 <?= relayButton("r52Off","Off","r520",""); ?>
-                
                 <?= relayButton("r52Auto","Auto","r522",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R53N; ?>
               <div class="btn-group">
                 <?= relayButton("r53On","On","r531",""); ?>
                 <?= relayButton("r53Off","Off","r530",""); ?>
-                
                 <?= relayButton("r53Auto","Auto","r532",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R54N; ?>
               <div class="btn-group">
                 <?= relayButton("r54On","On","r541",""); ?>
                 <?= relayButton("r54Off","Off","r540",""); ?>
-                
                 <?= relayButton("r54Auto","Auto","r542",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R55N; ?>
               <div class="btn-group">
                 <?= relayButton("r55On","On","r551",""); ?>
                 <?= relayButton("r55Off","Off","r550",""); ?>
-                
                 <?= relayButton("r55Auto","Auto","r552",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R56N; ?>
               <div class="btn-group">
                 <?= relayButton("r56On","On","r561",""); ?>
                 <?= relayButton("r56Off","Off","r560",""); ?>
-                
                 <?= relayButton("r56Auto","Auto","r562",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R57N; ?>
               <div class="btn-group">
                 <?= relayButton("r57On","On","r571",""); ?>
                 <?= relayButton("r57Off","Off","r570",""); ?>
-                
                 <?= relayButton("r57Auto","Auto","r572",""); ?>
-                
               </div>
-              
             </div>
             <div class="span1">
               <?= $R58N; ?>
               <div class="btn-group">
                 <?= relayButton("r58On","On","r581",""); ?>
                 <?= relayButton("r58Off","Off","r580",""); ?>
-                
                 <?= relayButton("r58Auto","Auto","r582",""); ?>
-                
               </div>
-              
             </div>
           </div>
           <div class="well well-small">
             <?= ajaxButton("iFeedingMode","Feed","mf",""); ?>
             <?= ajaxButton("iWCMode","Waterchange","mw",""); ?>
             <?= ajaxButton("iCancelMode","Cancel","bp",""); ?>
-            
           </div>
         </div>
       </div>
@@ -1870,6 +1563,10 @@ function refreshData(data) {
       $("#sumpcam").attr("src", sumpcamURL + "?abc=" + new Date().getTime());
     }
 
+// Replace source
+$('#fishcam').error(function(){ $(this).attr('src', 'images/webcam_404.jpg'); });
+$('#sumpcam').error(function(){ $(this).attr('src', 'images/webcam_404.jpg'); });
+
 $(function() {
       allCacheData();
       drawWLGauge();
@@ -1891,6 +1588,10 @@ $(function() {
 	allData();
         refreshTimer = setTimeout(updateAllData,3000);
       }
+
+      $("#sumpcam").click(function() {
+	$("#fishcam").click();
+      });
 
       $("#fishcam").click(function() {
         if( timer == null ) {
