@@ -15,7 +15,7 @@ sed 's/xml://g' | \
 sed 's/mem://g' | \
 sed 's/relays://g' | \
 sed 's/info://g' | \
-sed 's/:/=/g'`
+sed 's/:/=/g' | sed 's/Pulse//g'`
 do 
 	echo $i
 done 

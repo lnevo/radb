@@ -38,27 +38,26 @@ error_reporting(E_ALL);
   			        <br>
             		Refill: [
           		  ATO: <b><span data-mem-key="Mem_B_MaintATO"></span></b>
-            		Calcium: <b><span data-mem-key="Mem_B_MaintCal"></span></b>
+            		Cal: <b><span data-mem-key="Mem_B_MaintCal"></span></b>
             		Alk: <b><span data-mem-key="Mem_B_MaintAlk"></span></b>
-            		Vinegar: <b><span data-mem-key="Mem_B_MaintVinegar"></span></b>
+            		Mag: <b><span data-mem-key="Mem_B_MaintVinegar"></span></b>
             		]<br>
             		Filter: [ 
-            		Carbon: <b><span data-mem-key="Mem_B_MaintGAC"></span></b>
-            		GFO: <b><span data-mem-key="Mem_B_MaintGFO"></span></b>
+            		Carbon/GFO: <b><span data-mem-key="Mem_B_MaintGAC"></span></b>
+            		Scrubber: <b><span data-mem-key="Mem_B_MaintGFO"></span></b>
            		  Sock: <b><span data-mem-key="Mem_B_MaintSocks"></span></b>
   			        ]<br>
               	<p>
               	<form class="form-inline">
-                <?= ajaxButton("resetGAC","Replace Carbon","mb144","0"); ?>
-                <?= ajaxButton("resetGFO","Replace GFO","mb145","0"); ?>
-                <p><p>
                 <?= ajaxButton("resetCal","Refill Cal","mb146","0"); ?>
                 <?= ajaxButton("resetAlk","Refill Alk","mb147","0"); ?>
-                <?= ajaxButton("resetVinegar","Refill Vinegar","mb177","0"); ?>
-                <p>
+                <?= ajaxButton("resetMag","Refill Mag","mb177","0"); ?>
+                <p><p>
+                <?= ajaxButton("resetGAC","Replace Carbon/GFO","mb144","0"); ?>
+                <?= ajaxButton("resetGFO","Clean Scrubber","mb145","0"); ?>
+                <p><p>
                 <?= ajaxButton("resetSkimmer","Clean Skimmer","mb151","0"); ?>
-                <p>
-                <?= ajaxButton("resetSock","Change Filter Sock","mb152","0"); ?>			
+                <?= ajaxButton("resetSock","Change Filter Sock Roll","mb152","0"); ?>			
                 </form>
                         T1: <b><span data-xml-key="T1"></span></b> 
                         T2: <b><span data-xml-key="T2"></span></b> 
@@ -285,12 +284,15 @@ error_reporting(E_ALL);
               <div class="accordion-inner">  
             		<?= ajaxForm("DP1 Volume","DP1Volume","setDP1Volume","Mem_I_DP1Volume","mb132"); ?>
              		<?= ajaxForm("DP1 Time","DP1Time","setDP1Time","Mem_B_DP1Timer","mb212"); ?>
+             		<?= ajaxForm("DP1 Repeat","DP1Repeat","setDP1Repeat","Mem_I_DP1RepeatInterval","mi243"); ?>
             		<h5>DP1 dosed today: <span data-xml-key="C1"></span> units</h5>
              		<?= ajaxForm("DP2 Volume","DP2Volume","setDP2Volume","Mem_I_DP2Volume","mb138"); ?>
             		<?= ajaxForm("DP2 Time","DP2Time","setDP2Time","Mem_B_DP2Timer","mb213"); ?>
+             		<?= ajaxForm("DP2 Repeat","DP2Repeat","setDP2Repeat","Mem_I_DP2RepeatInterval","mi245"); ?>
             		<h5>DP2 dosed today: <span data-xml-key="C2"></span> units</h5>
              		<?= ajaxForm("DP3 Volume","DP3Volume","setDP3Volume","Mem_I_DP3Volume","mb158"); ?>
             		<?= ajaxForm("DP3 Time","DP3Time","setDP3Time","Mem_B_DP3Timer","mb333"); ?>
+             		<?= ajaxForm("DP3 Repeat","DP3Repeat","setDP3Repeat","Mem_I_DP3RepeatInterval","mi334"); ?>
             		<h5>DP3 dosed today: <span data-xml-key="C3"></span> units</h5>
                 <form>
             		<?= ajaxButton("UnlockPorts","Unlock Ports","r380",""); ?>

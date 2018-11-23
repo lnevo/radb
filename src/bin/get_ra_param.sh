@@ -72,8 +72,8 @@ case $1 in
 		;;
 	relay*)
 		RELAY=`echo $1 | sed 's/[a-z]//g'`
-		eval "echo \$R$RELAY"
-		eval "echo \$R$RELAY"
+		eval "echo \$relay${RELAY}status"
+		eval "echo \$relay${RELAY}status"
 		echo $UPTIME
 		echo 0
 		;;

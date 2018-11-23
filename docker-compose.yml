@@ -7,6 +7,7 @@ web:
     - ./src/public:/www
     - ./src/config.php:/www/radb/config.php
     - ./src/vhost.conf:/etc/nginx/sites-enabled/vhost.conf
+    - ./src/htpasswd:/etc/htpasswd
   links:
     - php
 php:
