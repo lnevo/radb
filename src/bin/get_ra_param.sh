@@ -4,7 +4,9 @@ RADB=/www/radb
 cd $RADB
 
 #eval $(php r99.php)
-eval $(/root/bin/r99.sh 2>/dev/null)
+#eval $(/root/bin/r99.sh 2>/dev/null)
+eval $(curl -s http://www.easte.net/radb/r99.php)
+
 UPTIME=0
 
 case $1 in 
@@ -16,7 +18,13 @@ case $1 in
 		;;
 	ph)
 		echo $PH 
-		echo $PH
+		echo $PHE
+		echo $UPTIME
+		echo 0
+		;;
+	alk)
+		echo $PHE 
+		echo $PHE | awk '{ val=$1*17.86/100;printf "%.0f\n",val}' 
 		echo $UPTIME
 		echo 0
 		;;
@@ -57,8 +65,8 @@ case $1 in
 		echo 0
 		;;
 	dosing)
+		echo $C0
 		echo $C1
-		echo $C2
 		echo $UPTIME
 		echo 0
 		;;

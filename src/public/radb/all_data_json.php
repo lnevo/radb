@@ -5,6 +5,7 @@
 
  $cachexml = new SimpleXMLElement($GLOBALS['AllCache'], null, true);
  $xml = new SimpleXMLElement(urlMaker($_POST['urlvar'],$_POST["cmd"],$_POST["val"]), null, true);
+ $alk = file_get_contents ( 'alk.html' );
 
 #  	$RBIN=getBin($xml->{'R'});
 #       $RON=getBin($xml->{'RON'});
@@ -280,7 +281,7 @@ $memData["Mem_I_CalDP2Time"]=readInt(136-$FullVarsStart,$ra_mem_full);
 $memData["Mem_I_DP2Volume"]=readInt(138-$FullVarsStart,$ra_mem_full);
 $memData["Mem_B_LogATO"]=readByte(140-$FullVarsStart,$ra_mem_full);
 $memData["Mem_B_LogPrevATO"]=readByte(141-$FullVarsStart,$ra_mem_full);
-$memData["Mem_B_RateAlarm"]=readByte(142-$FullVarsStart,$ra_mem_full);
+$memData["Mem_B_AlkMaxDelta"]=readByte(142-$FullVarsStart,$ra_mem_full);
 $memData["Mem_B_TideMode"]=readByte(143-$FullVarsStart,$ra_mem_full);
 $memData["Mem_B_MaintGAC"]=readByte(144-$FullVarsStart,$ra_mem_full);
 $memData["Mem_B_MaintGFO"]=readByte(145-$FullVarsStart,$ra_mem_full);
@@ -320,6 +321,11 @@ $memData["Mem_I_AWCOffset"]=readInt(184-$FullVarsStart,$ra_mem_full);
 $memData["Mem_I_MixTime"]=readInt(186-$FullVarsStart,$ra_mem_full);
 $memData["Mem_I_MixFrequency"]=readInt(188-$FullVarsStart,$ra_mem_full);
 $memData["Mem_B_FlushTime"]=readByte(190-$FullVarsStart,$ra_mem_full);
+$memData["Mem_I_DP1Log"]=readInt(191-$FullVarsStart,$ra_mem_full);
+$memData["Mem_I_DP2Log"]=readInt(193-$FullVarsStart,$ra_mem_full);
+$memData["Mem_I_DP3Log"]=readInt(195-$FullVarsStart,$ra_mem_full);
+$memData["Mem_B_AlkAdjVol"]=readByte(197-$FullVarsStart,$ra_mem_full);
+$memData["Mem_B_AlkAdjDelta"]=readByte(198-$FullVarsStart,$ra_mem_full);
 
 $memData["Mem_B_ResetMemory"]=readByte(199-$FullVarsStart,$ra_mem_full);
 $FullVarsEnd=200;
@@ -460,8 +466,14 @@ $VarsEnd=$VarsStart+169;
 
 $info = array();
 $info["USAGE"]=$xml->{'C6'} > 0 ? round(($xml->{'WL'}-10)/$xml->{'C6'}) : "INF";
-$info["SUNRISE"]=$memData["Mem_B_StdLightsOnHour"]-($memData["Mem_B_ActinicOffset"]/60) . ':' . $memData["Mem_B_StdLightsOnMinute"];
-$info["SUNSET"]=$memData["Mem_B_StdLightsOffHour"]+($memData["Mem_B_ActinicOffset"]/60) . ':' . $memData["Mem_B_StdLightsOffMinute"];
+#$info["SUNRISE"]=$memData["Mem_B_StdLightsOnHour"]-($memData["Mem_B_ActinicOffset"]/60) . ':' . $memData["Mem_B_StdLightsOnMinute"];
+#$info["SUNSET"]=$memData["Mem_B_StdLightsOffHour"]+($memData["Mem_B_ActinicOffset"]/60) . ':' . $memData["Mem_B_StdLightsOffMinute"];
+$RISE_HOUR=$memData["Mem_B_StdLightsOnHour"]-($memData["Mem_B_ActinicOffset"]/60);
+if ($RISE_HOUR < 0 ) { $RISE_HOUR=$RISE_HOUR+24; }
+$SET_HOUR=$memData["Mem_B_StdLightsOffHour"]+($memData["Mem_B_ActinicOffset"]/60);
+if ($SET_HOUR > 23 ) { $SET_HOUR=$SET_HOUR-23; }
+$info["SUNRISE"]=$RISE_HOUR . ':' . $memData["Mem_B_StdLightsOnMinute"];
+$info["SUNSET"]=$SET_HOUR . ':' . $memData["Mem_B_StdLightsOffMinute"];
 $info["DP1Rate"]=number_format(($memData["Mem_I_CalDP1Vol"] / $memData["Mem_I_CalDP1Time"] * 60),2);
 $info["DP2Rate"]=number_format(($memData["Mem_I_CalDP2Vol"] / $memData["Mem_I_CalDP2Time"] * 60),2);
 $info["DP3Rate"]=number_format(($memData["Mem_I_CalDP3Vol"] / $memData["Mem_I_CalDP3Time"] * 60),2);
@@ -510,6 +522,7 @@ $return["xml"] = $xml;
 $return["info"] = $info;
 $return["mem"] = $memData;
 $return["relays"] = $relayData;
+$return["alk"] = $alk;
 
 echo json_encode($return);
 ?>

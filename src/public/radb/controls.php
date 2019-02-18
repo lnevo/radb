@@ -10,7 +10,28 @@ error_reporting(E_ALL);
       
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse01">
+              <a class="accordion-toggle" id="alktgl" data-toggle="collapse" data-parent="#accordion" href="#collapse00">
+                <h5>Alkalinity</h5>
+              </a>
+            </div>
+            <div id="collapse00" class="accordion-body collapse">
+              <div class="accordion-inner">
+	      	<form class="form-inline" method="post" target="hidden-form" action="http://xena.easte.net:9000/EDAC">
+		<div id="alk"></div>
+			<input type="hidden" name="GET-dKH" >
+			<button class="btn" name="EAPK" value="LeesReef" type="submit">Get dKH</button>
+		</form>
+             	  <?= ajaxForm("Alk Target","AlkTargetAjax","setAlkTarget","Mem_B_AlkTarget","mb174"); ?>
+             	  <?= ajaxForm("Alk Adjust Volume","AlkAdjVolAjax","setAlkAdjustVol","Mem_B_AlkAdjVol","mb197"); ?>
+             	  <?= ajaxForm("Alk Adjust Delta","AlkAdjDeltaAjax","setAlkAdjustDelta","Mem_B_AlkAdjDelta","mb198"); ?>
+             	  <?= ajaxForm("Alk Max Delta","AlkMaxDeltaAjax","setAlkMaxDelta","Mem_B_AlkMaxDelta","mb142"); ?>
+		<IFRAME style="display:none" name="hidden-form"></IFRAME>  
+	      </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle" id="mainttgl" data-toggle="collapse" data-parent="#accordion" href="#collapse01">
                 <h5>Maintenance</h5>
               </a>
             </div>
@@ -37,25 +58,24 @@ error_reporting(E_ALL);
            		  Skimmer Cleaned: <b><span data-mem-key="Mem_B_MaintSkimmer"></span></b>
   			        <br>
             		Refill: [
-          		  ATO: <b><span data-mem-key="Mem_B_MaintATO"></span></b>
             		Cal: <b><span data-mem-key="Mem_B_MaintCal"></span></b>
             		Alk: <b><span data-mem-key="Mem_B_MaintAlk"></span></b>
             		Mag: <b><span data-mem-key="Mem_B_MaintVinegar"></span></b>
+            		KRS: <b><span data-mem-key="Mem_B_MaintGAC"></span></b>
             		]<br>
             		Filter: [ 
-            		Carbon/GFO: <b><span data-mem-key="Mem_B_MaintGAC"></span></b>
+		        Carbon/GFO: <b><span data-mem-key="Mem_B_MaintWC"></span></b>
             		Scrubber: <b><span data-mem-key="Mem_B_MaintGFO"></span></b>
-           		  Sock: <b><span data-mem-key="Mem_B_MaintSocks"></span></b>
+           		Klir: <b><span data-mem-key="Mem_B_MaintSocks"></span></b>
   			        ]<br>
               	<p>
               	<form class="form-inline">
                 <?= ajaxButton("resetCal","Refill Cal","mb146","0"); ?>
                 <?= ajaxButton("resetAlk","Refill Alk","mb147","0"); ?>
                 <?= ajaxButton("resetMag","Refill Mag","mb177","0"); ?>
+                <?= ajaxButton("resetGAC","Refill KRS","mb144","0"); ?>
                 <p><p>
-                <?= ajaxButton("resetGAC","Replace Carbon/GFO","mb144","0"); ?>
                 <?= ajaxButton("resetGFO","Clean Scrubber","mb145","0"); ?>
-                <p><p>
                 <?= ajaxButton("resetSkimmer","Clean Skimmer","mb151","0"); ?>
                 <?= ajaxButton("resetSock","Change Filter Sock Roll","mb152","0"); ?>			
                 </form>
@@ -63,6 +83,7 @@ error_reporting(E_ALL);
                         T2: <b><span data-xml-key="T2"></span></b> 
                         T3: <b><span data-xml-key="T3"></span></b> 
                         SAL: <b><span data-xml-key="SAL"></span></b> 
+                        ALK: <b><span data-xml-key="PHE"></span></b> 
                         PH: <b><span data-xml-key="PH"></span></b> <p>
 
               </div>
@@ -71,7 +92,7 @@ error_reporting(E_ALL);
           
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse02">
+              <a class="accordion-toggle" id="atotgl" data-toggle="collapse" data-parent="#accordion" href="#collapse02">
                 <h5>ATO</h5>
               </a>
             </div>
@@ -85,7 +106,10 @@ error_reporting(E_ALL);
               	<form class="form-inline">
                	  <?= ajaxButton("RefillATOOn","Start ATO Refill","r311",""); ?>
                	  <?= ajaxButton("RefillATOOff","Stop ATO Refill","r312",""); ?>
-  		          </form>
+  		</form>
+             	  <?= ajaxForm("ATO Timeout","ATOTimeoutAjax","setATOTimeoutAjax","Mem_I_ATOExtendedTimeout","mi276"); ?>
+             	  <?= ajaxForm("ATO Low Level","WaterLevelLowAjax","setWaterLevelLowAjax","Mem_B_WaterLevelLow","mb331"); ?>
+             	  <?= ajaxForm("ATO High Level","WaterLevelHighAjax","setWaterLevelHighAjax","Mem_B_WaterLevelHigh","mb332"); ?>
              	  <?= ajaxForm("ATO Rate Alarm","RateAlarmAjax","setRateAlarmAjax","Mem_B_RateAlarm","mb142"); ?>
              	  <?= ajaxForm("RO Solenoid Flush Time","FlushTimeAjax","setFlushTimeAjax","Mem_B_FlushTime","mb190"); ?>
               </div>
@@ -94,7 +118,7 @@ error_reporting(E_ALL);
 
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse02a">
+              <a class="accordion-toggle" id="wctgl" data-toggle="collapse" data-parent="#accordion" href="#collapse02a">
                 <h5>Water Change</h5>
               </a>
             </div>
@@ -120,7 +144,7 @@ error_reporting(E_ALL);
         
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse03">
+              <a class="accordion-toggle" id="rftgl"  data-toggle="collapse" data-parent="#accordion" href="#collapse03">
                 <h5>RF Control</h5>        
               </a>
             </div>
@@ -152,7 +176,7 @@ error_reporting(E_ALL);
         
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse04">
+              <a class="accordion-toggle" id="rfprogtgl" data-toggle="collapse" data-parent="#accordion" href="#collapse04">
                 <h5>RF Program Settings</h5>
               </a>
             </div>
@@ -192,7 +216,7 @@ error_reporting(E_ALL);
           
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse05">
+              <a class="accordion-toggle" id="pwmtgl" data-toggle="collapse" data-parent="#accordion" href="#collapse05">
                 <h5>Lighting</h5>
               </a>
             </div>
@@ -227,13 +251,17 @@ error_reporting(E_ALL);
         	    	<?= ajaxForm("Set Offset","SetOffset","setSetOffset","Mem_I_SetOffset","mi164"); ?>
             		<?= ajaxForm("Latitude","Latitude","setLatitude","Mem_I_Latitude","mi108"); ?>
             		<?= ajaxForm("Longitude","Longitude","setLongitude","Mem_I_Longitude","mi110"); ?>
+                	<h5>Storm</h5>
+                    <?= ajaxButton("Enable Storm","Storm Mode On","mb178","1"); ?>
+            	    <?= ajaxButton("Disable Storm","Storm Mode Off","mb178","0"); ?>
+            	  	Currently: <?= memStatus("Mem_B_EnableStorm"); ?>
               </div>
             </div>
           </div>
         
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse06">
+              <a class="accordion-toggle" id="vacatgl" data-toggle="collapse" data-parent="#accordion" href="#collapse06">
                 <h5>Vacation Control</h5>
               </a>
             </div>
@@ -255,14 +283,14 @@ error_reporting(E_ALL);
     <?= ajaxForm("AutoFeed Presses","AutoFeedPress","setAutoFeedPress","Mem_B_AutoFeedPress","mb103"); ?>
     <?= ajaxForm("AutoFeed Repeat","AutoFeedRepeat","setAutoFeedRepeat","Mem_B_AutoFeedRepeat","mb104"); ?>
     <?= ajaxForm("AutoFeed Offset","AutoFeedOffset","setAutoFeedOffset","Mem_B_AutoFeedOffset","mb105"); ?>
-            		<h5>Feedings today: <span data-xml-key="C0"></span></h5>
+            		<h5>Feedings today: <span data-xml-key="C7"></span></h5>
               </div>
             </div>
           </div>
         
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse07">
+              <a class="accordion-toggle" id="swbtgl" data-toggle="collapse" data-parent="#accordion" href="#collapse07">
                 <h5>Swabbie Control</h5>
               </a>
             </div>
@@ -276,24 +304,24 @@ error_reporting(E_ALL);
         
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse08">
+              <a class="accordion-toggle" id="dostgl" data-toggle="collapse" data-parent="#accordion" href="#collapse08">
                 <h5>Dosing Pumps</h5>
               </a>
             </div>
             <div id="collapse08" class="accordion-body collapse">
               <div class="accordion-inner">  
-            		<?= ajaxForm("DP1 Volume","DP1Volume","setDP1Volume","Mem_I_DP1Volume","mb132"); ?>
+            		<?= ajaxForm("DP1 Volume","DP1Volume","setDP1Volume","Mem_I_DP1Volume","mi132"); ?>
              		<?= ajaxForm("DP1 Time","DP1Time","setDP1Time","Mem_B_DP1Timer","mb212"); ?>
              		<?= ajaxForm("DP1 Repeat","DP1Repeat","setDP1Repeat","Mem_I_DP1RepeatInterval","mi243"); ?>
-            		<h5>DP1 dosed today: <span data-xml-key="C1"></span> units</h5>
-             		<?= ajaxForm("DP2 Volume","DP2Volume","setDP2Volume","Mem_I_DP2Volume","mb138"); ?>
+            		<h5>DP1 dosed today: <span data-xml-key="C0"></span> units</h5>
+             		<?= ajaxForm("DP2 Volume","DP2Volume","setDP2Volume","Mem_I_DP2Volume","mi138"); ?>
             		<?= ajaxForm("DP2 Time","DP2Time","setDP2Time","Mem_B_DP2Timer","mb213"); ?>
              		<?= ajaxForm("DP2 Repeat","DP2Repeat","setDP2Repeat","Mem_I_DP2RepeatInterval","mi245"); ?>
-            		<h5>DP2 dosed today: <span data-xml-key="C2"></span> units</h5>
+            		<h5>DP2 dosed today: <span data-xml-key="C1"></span> units</h5>
              		<?= ajaxForm("DP3 Volume","DP3Volume","setDP3Volume","Mem_I_DP3Volume","mb158"); ?>
             		<?= ajaxForm("DP3 Time","DP3Time","setDP3Time","Mem_B_DP3Timer","mb333"); ?>
              		<?= ajaxForm("DP3 Repeat","DP3Repeat","setDP3Repeat","Mem_I_DP3RepeatInterval","mi334"); ?>
-            		<h5>DP3 dosed today: <span data-xml-key="C3"></span> units</h5>
+            		<h5>DP3 dosed today: <span data-xml-key="C2"></span> units</h5>
                 <form>
             		<?= ajaxButton("UnlockPorts","Unlock Ports","r380",""); ?>
             		<?= ajaxButton("CalibrateDP","Begin Calibration","r371",""); ?>  
@@ -316,7 +344,7 @@ error_reporting(E_ALL);
          
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse09">
+              <a class="accordion-toggle" id="overridetgl" data-toggle="collapse" data-parent="#accordion" href="#collapse09">
                 <h5>Override Masks</h5>
               </a>
             </div>
@@ -335,7 +363,7 @@ error_reporting(E_ALL);
         
           <div class="accordion-group">
             <div class="accordion-heading">
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse10">
+              <a class="accordion-toggle" id="memtgl" data-toggle="collapse" data-parent="#accordion" href="#collapse10">
                 <h5>Memory</h5>
               </a>
             </div>
@@ -343,8 +371,10 @@ error_reporting(E_ALL);
               <div class="accordion-inner">
 			<button class="btn" type=submit value="r99btn" onclick="location.href='r99_format.php';">Get R99 Data</button>
               		<?= ajaxButton("ResetMemory","Reset Memory","mb199","1"); ?>
-					<P>
               		<?= ajaxButton("RebootCtrl","Reboot Conroller","boot",""); ?>
+					<P>
+			<p>  <a class="btn" type=submit onclick="location.href='login/index.html';">Enable/Disable Authorization</a>
+
 		<div id="r99content">
 		</div>
               </div>

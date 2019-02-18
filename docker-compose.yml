@@ -20,6 +20,8 @@ php:
 mrtg:
   image: lnevo/mrtg
   restart: always
+  environment:
+  - TZ=EST5EDT
   volumes:
     - ./src/public:/www
     - ./src/bin:/root/bin

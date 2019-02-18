@@ -1,21 +1,22 @@
 #!/bin/bash
 
-CMD="php /www/radb/all_data_json.php 2>/dev/null"
 
-if [ "$1" == "curl" ];then
-	CMD="curl -s http://www.easte.net/radb/all_data_json.php"
-fi
+#cd /www/radb 2>/dev/null && CMD="php --define display_errors=stderr all_data_json.php 2>/dev/null" || 
+
+CMD="curl -s http://www.easte.net/radb/all_data_json.php"
 
 for i in `$CMD | \
-sed 's/,/ /g' | \
-sed 's/\"//g' | 
-sed 's/{//g' | \
-sed 's/}//g' | \
-sed 's/xml://g' | \
-sed 's/mem://g' | \
-sed 's/relays://g' | \
-sed 's/info://g' | \
-sed 's/:/=/g' | sed 's/Pulse//g'`
+sed -e 's/,\"alk.*$/}/g' \
+-e 's/,/ /g' \
+-e 's/\"//g' \
+-e 's/{//g' \
+-e 's/}//g' \
+-e 's/xml://g' \
+-e 's/mem://g' \
+-e 's/relays://g' \
+-e 's/info://g' \
+-e 's/:/=/g' -e 's/Pulse//g' \
+`
 do 
 	echo $i
 done 

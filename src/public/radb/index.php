@@ -200,6 +200,8 @@
         <div class="progress"> <div class="bar" id="PHBar" style="width: 0%;"> </div> </div>
         <span id="SALLabel"> SAL: </span>
         <div class="progress"> <div class="bar" id="SALBar" style="width: 0%;"> </div> </div>
+        <span id="ALKLabel"> ALK: </span>
+        <div class="progress"> <div class="bar" id="ALKBar" style="width: 0%;"> </div> </div>
         <span id="RFSLabel"> RFS: </span>
         <div class="progress"> <div class="bar" id="RFSBar" style="width: 0%;"> </div> </div>
         <span id="WLLabel"> ATO: </span>
@@ -1057,6 +1059,7 @@ Howdy, I'm in Section 2.
       </div>
       
       <div class="tab-pane" id="controlstab">
+        <?= collapse("collapse00","Alkalinity"); ?>
         <?= collapse("collapse01","Maintenance"); ?>
         <?= collapse("collapse02","ATO"); ?>
         <?= collapse("collapse02a","Water Change"); ?>
@@ -1084,7 +1087,7 @@ Howdy, I'm in Section 2.
     var wl_gauge = new RGraph.Gauge('wl', 0, 100,0);
     var moon_gauge = new RGraph.Gauge('moon', 0, 100,0,0,0,0,0,0);
     var dt_temp = new RGraph.Gauge('dt', 70, 85,0,0);
-    var ph_gauge = new RGraph.Gauge('ph', 7, 9, 0);
+    var ph_gauge = new RGraph.Gauge('ph', 7, 10, 0);
 
     if(typeof(Storage)!=="undefined")
     {
@@ -1094,6 +1097,33 @@ Howdy, I'm in Section 2.
       localStg=true;
       console.log(localStorage.lastPage);
     }
+
+    function findGetParameter(parameterName) {
+        var result = null,
+            tmp = [];
+        var items = location.search.substr(1).split("&");
+        for (var index = 0; index < items.length; index++) {
+            tmp = items[index].split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        }
+        return result;
+    }
+
+    var isLogin=findGetParameter("login");
+    var loggedIn;
+    if (localStg) {
+	if (isLogin=="true") {
+  	  localStorage.setItem('LOGIN', 'TRUE');
+	  var url = "http://www.easte.net/radb/";
+	  window.location.replace(url);
+	} else if (isLogin=="false") {
+  	  localStorage.setItem('LOGIN', 'FALSE');
+	  var url = "http://www.easte.net/radb/";
+	  window.location.replace(url);
+        }	
+	loggedIn=localStorage.getItem("LOGIN");	
+    }
+	console.log(loggedIn);
 
     function drawSpeedGauge() {
       gauge.Set('chart.title.top', 'Speed');
@@ -1109,7 +1139,8 @@ Howdy, I'm in Section 2.
       gauge.Set('chart.centerpin.color', '#666');
       gauge.Set('chart.needle.colors', [RGraph.RadialGradient(gauge, 125, 125, 0, 125, 125, 25, 'transparent', 'white'),
                                         RGraph.RadialGradient(gauge, 125, 125, 0, 125, 125, 25, 'transparent', '#d66'),
-                                        RGraph.RadialGradient(gauge, 125, 125, 0, 125, 125, 25, 'transparent', '#949494')]);
+                                        RGraph.RadialGradient(gauge, 125, 125, 0, 125, 125, 25, 'transparent', '#949494'),
+                                        RGraph.RadialGradient(gauge, 125, 125, 0, 125, 125, 25, 'transparent', '#008000')]);
       gauge.Set('chart.needle.size', [null, 50, 35]);
       gauge.Set('chart.needle.type', 'line');
       gauge.Set('chart.text.color', 'white');
@@ -1279,8 +1310,9 @@ Howdy, I'm in Section 2.
       ph_gauge.Set('chart.background.color', 'black');
       ph_gauge.Set('chart.background.gradient', true);
       ph_gauge.Set('chart.centerpin.color', '#666');
-      ph_gauge.Set('chart.needle.colors', [RGraph.RadialGradient(ph_gauge, 125, 125, 0, 125, 125, 25, 'transparent', 'white')]);
-      ph_gauge.Set('chart.needle.size', [null, 50, 50]);
+      ph_gauge.Set('chart.needle.colors', [RGraph.RadialGradient(ph_gauge, 125, 125, 0, 125, 125, 25, 'transparent', 'white'),
+                                          RGraph.RadialGradient(ph_gauge, 125, 125, 0, 125, 125, 25, 'transparent', '#949494')]);
+      ph_gauge.Set('chart.needle.size', [null, 50, 35]);
       ph_gauge.Set('chart.needle.type', 'line');
       ph_gauge.Set('chart.text.color', 'white');
       ph_gauge.Set('chart.tickmarks.big.color', 'white');
@@ -1289,7 +1321,7 @@ Howdy, I'm in Section 2.
       ph_gauge.Set('chart.border.outer', '#666');
       ph_gauge.Set('chart.border.inner', '#333');
       ph_gauge.Set('chart.colors.ranges', []);
-      ph_gauge.Set('chart.colors.ranges', [ [7.0,7.4,'#800'],[7.4,7.8,'orange'],[7.8,8.2,'#070'],[8.2,8.6,'orange'],[8.6,9,'#800']])
+      ph_gauge.Set('chart.colors.ranges', [ [7.0,7.5,'#800'],[7.5,7.8,'orange'],[7.8,8.5,'#070'],[8.5,8.8,'orange'],[8.8,10,'#800']])
         ph_gauge.Draw();
     }
 	
@@ -1304,13 +1336,13 @@ function refreshAllData(data) {
 	console.log(data);
 
 	refreshData(data);
-	gauge.value=[data.xml.RFS, data.mem.Mem_B_RFSpeed, data.xml.C4 ];
+	gauge.value=[data.xml.RFS, data.mem.Mem_B_RFSpeed, data.xml.C4, data.xml.SAL/10 ];
 	mode_gauge.value=[data.xml.RFM, data.mem.Mem_B_RFMode, data.mem.Mem_B_TideMode];
 	dur_gauge.value=[data.xml.RFD, data.mem.Mem_B_RFDuration];
 	wl_gauge.value=data.xml.WL;
 	moon_gauge.value=[data.xml.PWMA, data.xml.PWMD, data.xml.PWME0, data.xml.PWME1, data.xml.PWME2, data.xml.PWME3];
 	dt_temp.value=[data.xml.T1/10,data.xml.T2/10,data.xml.T3/10];
-	ph_gauge.value=data.xml.PH/100;
+	ph_gauge.value=[data.xml.PH/100,data.xml.PHE/100];
 
 	gauge.Set('chart.title.bottom', data.xml.RFS + '%');
 	mode_gauge.Set('chart.title.bottom', data.xml.RFM==11 ? data.mem.Mem_B_TideMode :data.xml.RFM );
@@ -1411,7 +1443,9 @@ function refreshData(data) {
     $("#PHLabel").text("PH: " + data.xml.PH/100);
     $("#PHBar").width(data.xml.PH/10+'%');
     $("#SALLabel").text("SAL: " + data.xml.SAL/10);
-    $("#SALBar").width(data.xml.SAL/10+'%');
+    $("#SALBar").width(data.xml.SAL/10 + 15 +'%');
+    $("#ALKLabel").text("ALK: " + data.xml.PHE/100);
+    $("#ALKBar").width(data.xml.PHE/10 - 30 +'%');
     $("#RFSLabel").text("RFS: " + data.xml.RFS + "% / " + data.xml.C4 + "%");
     $("#RFSBar").width(data.xml.RFS+'%');
     $("#MainLabel").text("Lights: " + data.xml.PWME0 + '% / ' + data.xml.PWME1 + '% / ' + data.xml.PWME2 + '% / ' + data.xml.PWME3 + '%');
@@ -1432,6 +1466,8 @@ function refreshData(data) {
     $("#PWMABar").width(data.xml.PWMA+'%');
     $("#PWMDBar").width(data.xml.PWMD+'%');
 
+    $("#alk").html(data.alk);
+	console.log(data.alk);
     updateFishcam(); 
 }
 
@@ -1641,6 +1677,11 @@ $(function() {
         });
       }
 
+      $(".collapsed").click(function() {
+	if(localStg) { localStorage.lastAccordion=this.id; }
+	console.log("Clicking accordion-toggle");
+      });
+
       $(".linkstabTab").click(function() {
 	if(localStg) { localStorage.lastPage=this.id; }
       });
@@ -1687,7 +1728,6 @@ $(function() {
       });
 
 	$(document).on("submit", ".ajax-form",function(e) {
-//      $(".ajax-form").submit(function(e) {
         e.preventDefault();
         var cmd = $(this).attr('data-cmd');
       	var val = "";
@@ -1699,6 +1739,8 @@ $(function() {
         // console.log(val);
         // console.log("AJAX Mem");
         
+	if (loggedIn != "TRUE") { cmd="r99"; val=""; }
+
         var that = this;
         $.ajax({
           type: "POST",
@@ -1708,12 +1750,16 @@ $(function() {
             cmd: cmd, val: val }
           ,
           success: function(data) {
-  			if (data.xml[0] == "OK") {
-              $(that).find('.feedback').text('Saved successfully!');
-  			}
-            else {
+  			if (data.xml[0] == "ERR") {
               $(that).find('.feedback').text('There was an error.');
   			}
+            else {
+		if (loggedIn=="TRUE") {
+              $(that).find('.feedback').text('Saved successfully!');
+		} else {
+              $(that).find('.feedback').text('Authorization required!');
+  			}
+		}
   			// console.log(data);
   			$(that).find('.feedback').delay(2500).fadeOut();
           }
@@ -1738,6 +1784,8 @@ $(function() {
         // console.log(val);
         // console.log("AJAX Mem");
         
+	if (loggedIn != "TRUE") { cmd="r99"; val=""; }
+		
         var that = this;
         $.ajax({
           type: "POST",
@@ -1748,9 +1796,12 @@ $(function() {
           ,
           success: function(data) {
   			if (data.xml[0] != "ERR") {
-              feedback.text('Saved!');
+		if (loggedIn=="TRUE") {
+	              feedback.text('Saved');
+		} else {
+       		      feedback.text('ERROR');
   			}
-            else {
+  			} else {
               feedback.text('There was an error.');
   			}
   			// console.log(data);
@@ -1768,16 +1819,19 @@ $(function() {
 	  if(localStg) { localStorage.lastPage=this.id; }
 	}
 
+	var cmd = $(this).attr('data-cmd');
         var oldL = $(this).text();
         feedback = $(this);
         feedback.text('...').show();
-        
+
+	if (loggedIn != "TRUE") { cmd="r99"; val=""; }
+
         $.ajax({
           type: "POST",
           url: "all_data_json.php",
           data: {
             urlvar: 'RAURL', 
-            cmd: $(this).attr("data-cmd"), 
+            cmd: cmd,
             url: $(this).attr("url") }
           ,
           success: function(data) {
@@ -1798,6 +1852,9 @@ $(function() {
 	  // console.log(localStorage.lastPage);
 	  console.log("Clicking #" + localStorage.lastPage);
 	  $('#' + localStorage.lastPage).click();
+//	  if (localStorage.lastPage=='ControlsTab' || localStorage.lastPage='phoneControlTab') {
+//	    $('#' + localStorage.lastAccordion).click();
+//	  }
 	}
       }
 

@@ -1,2 +1,6 @@
 * * * * * /root/bin/update_ra.sh 
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * /root/bin/mrtg.sh
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /root/bin/mrtg.sh > /tmp/mrtg.log 2>&1
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /root/bin/update_alk.sh > /tmp/update_alk.log 2>&1
+0 18 * * * /root/bin/send_alk.sh > /tmp/send_alk.log 2>&1
+55 * * * * /root/bin/push_alk.sh > /tmp/push_alk.log 2>&1
+55 23 * * * /root/bin/send_ml.sh > /tmp/push_ml.log 2>&1
